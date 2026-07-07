@@ -1,196 +1,248 @@
 # DOCUMENT INDEX
 
-## Purpose
-
-This document is the navigation entry point for the Kisuke documentation.
-
-It defines the reading order, document authority, and dependency graph. Every contributor and AI assistant should use this file to understand where to start and how the documentation is organized.
+> Canonical navigation for the Kisuke repository.
 
 ---
 
 # Reading Order
 
-Read the documentation in this exact order.
+Always read documents in this order.
 
-## Level 0 — Repository
-
-1. PROJECT_MANIFEST.md
-2. IMPLEMENTATION_CONTRACT.md
-3. CLAUDE.md
-
----
-
-## Level 1 — Foundation
-
-1. docs/foundation/00-vision.md
-2. docs/foundation/01-constitution.md
-3. docs/foundation/02-product-definition.md
-4. docs/foundation/03-product-rules.md
-
-Purpose:
-
-Defines why Kisuke exists and the immutable rules of the system.
+```
+PROJECT_MANIFEST.md
+        ↓
+IMPLEMENTATION_CONTRACT.md
+        ↓
+CLAUDE.md
+        ↓
+MASTER_SPECIFICATION.md
+        ↓
+Supporting Documents
+```
 
 ---
 
-## Level 2 — Architecture
+# Repository Documents
 
-1. docs/architecture/04-domain-model.md
-2. docs/architecture/05-information-architecture.md
-3. docs/architecture/06-data-model.md
-4. docs/architecture/07-user-flows.md
+## Root
 
-Purpose:
-
-Defines the business model, ownership, relationships, metadata, and behavior.
-
----
-
-## Level 3 — Engineering
-
-1. docs/engineering/08-cli-spec.md
-2. docs/engineering/09-integrations.md
-3. docs/engineering/10-ai-abstraction.md
-4. docs/engineering/11-security.md
-5. docs/engineering/12-engineering-architecture.md
-
-Purpose:
-
-Defines how the system is implemented while preserving the architecture.
+| Document | Purpose |
+|----------|---------|
+| PROJECT_MANIFEST.md | Project overview and architectural intent |
+| IMPLEMENTATION_CONTRACT.md | Engineering rules |
+| CLAUDE.md | Claude Code operating instructions |
+| MASTER_SPECIFICATION.md | Complete architecture and product specification |
+| README.md | Repository introduction |
+| CHANGELOG.md | Version history |
 
 ---
 
-## Level 4 — Execution
+# Documentation
 
-1. docs/execution/13-roadmap.md
-2. docs/execution/14-implementation-plan.md
-3. docs/execution/15-coding-guidelines.md
-4. docs/execution/16-testing-strategy.md
-5. docs/execution/17-glossary.md
-6. docs/execution/99-architecture-audit.md
+## Foundation
 
-Purpose:
+```
+docs/foundation/
+```
 
-Defines the implementation process, engineering standards, and long-term maintenance.
+| Document | Purpose |
+|----------|---------|
+| 00-vision.md | Product vision |
+| 01-constitution.md | Immutable rules |
+| 02-product-definition.md | Product scope |
+| 03-product-rules.md | Product behavior |
 
 ---
 
-## Supporting Documents
+## Architecture
 
-### Architecture Decisions
+```
+docs/architecture/
+```
 
-Directory:
+| Document | Purpose |
+|----------|---------|
+| 04-domain-model.md | Canonical entities |
+| 05-information-architecture.md | Information organization |
+| 06-data-model.md | Metadata schema |
+| 07-user-flows.md | User workflows |
 
-```text
+---
+
+## Engineering
+
+```
+docs/engineering/
+```
+
+| Document | Purpose |
+|----------|---------|
+| 08-cli-spec.md | CLI specification |
+| 09-integrations.md | External integrations |
+| 10-ai-abstraction.md | AI provider abstraction |
+| 11-security.md | Security model |
+| 12-engineering-architecture.md | Software architecture |
+
+---
+
+## Execution
+
+```
+docs/execution/
+```
+
+| Document | Purpose |
+|----------|---------|
+| 13-roadmap.md | Product roadmap |
+| 14-implementation-plan.md | Milestones |
+| 15-coding-guidelines.md | Coding standards |
+| 16-testing-strategy.md | Testing strategy |
+| 17-glossary.md | Terminology |
+| 99-architecture-audit.md | Final architecture validation |
+
+---
+
+# Supporting Directories
+
+## ADRs
+
+```
 adrs/
 ```
 
-Purpose:
-
-Permanent record of accepted architectural decisions.
+Accepted architectural decisions.
 
 ---
 
-### RFCs
+## RFCs
 
-Directory:
-
-```text
+```
 rfcs/
 ```
 
-Purpose:
-
-Proposals for future architectural or product changes before implementation.
+Proposed architectural changes.
 
 ---
 
-### Architecture Diagrams
+## Architecture
 
-Directory:
-
-```text
+```
 architecture/
 ```
 
-Purpose:
+Contains:
 
-System diagrams, entity relationships, state machines, sequence diagrams, and component views.
+- Component diagrams
+- Entity diagrams
+- Sequence diagrams
+- State machines
 
 ---
 
-### Templates
+## Templates
 
-Directory:
-
-```text
+```
 templates/
 ```
 
-Purpose:
-
-Canonical Markdown and frontmatter templates for every entity.
+Canonical Markdown templates.
 
 ---
 
-# Document Authority
+## Source
 
-If documents disagree, resolve conflicts using this order:
+```
+src/
+```
 
-1. Constitution
-2. ADRs
-3. Domain Model
-4. Engineering Architecture
-5. Other documentation
-6. Source Code
-
-Source code never overrides the Constitution.
+Application source code.
 
 ---
 
-# Dependency Graph
+## Tests
 
-```text
-Vision
-    ↓
+```
+tests/
+```
+
+Automated tests.
+
+---
+
+# Authority Order
+
+When two documents disagree:
+
+```
 Constitution
-    ↓
-Product Definition
-    ↓
-Domain Model
-    ↓
-Information Architecture
-    ↓
-Data Model
-    ↓
-User Flows
-    ↓
-Engineering Architecture
-    ↓
-Implementation Plan
-    ↓
-Source Code
+        ↓
+PROJECT_MANIFEST.md
+        ↓
+MASTER_SPECIFICATION.md
+        ↓
+ADRs
+        ↓
+Engineering Docs
+        ↓
+Implementation
+```
+
+Implementation never overrides documentation.
+
+---
+
+# Development Order
+
+```
+Repository
+        ↓
+Master Specification
+        ↓
+Architecture Review
+        ↓
+Documentation
+        ↓
+Implementation
+        ↓
+Testing
+        ↓
+Release
 ```
 
 ---
 
-# Contributor Rules
+# Milestone Order
 
-Before implementing any feature:
-
-1. Read the relevant documentation.
-2. Verify the architecture is not being changed.
-3. Confirm the feature belongs to the current milestone.
-4. Update documentation if behavior changes.
-5. Add or update tests before merging.
+```
+M0 Repository
+        ↓
+M1 Domain
+        ↓
+M2 Storage
+        ↓
+M3 CLI
+        ↓
+M4 Resume
+        ↓
+M5 Search
+        ↓
+M6 Review
+        ↓
+M7 Integrations
+        ↓
+M8 AI
+        ↓
+M9 Plugins
+```
 
 ---
 
-# Completion Criteria
+# Rule
 
-The documentation repository is considered complete when:
+Every implementation task must be traceable to:
 
-* Every document is internally consistent.
-* No architectural contradictions exist.
-* Every implementation task can be traced back to a document.
-* A new engineer can implement Kisuke without additional product clarification.
+1. A section of the Master Specification.
+2. A milestone.
+3. A documented acceptance criterion.
+
+If any of these are missing, implementation must stop.
