@@ -1,0 +1,19 @@
+# Resource Frontmatter Schema
+
+Matches docs/architecture/06-data-model.md (Resource Schema) and the Universal
+Entity Schema. `owner` is the reserved sentinel `independent`. `resource_type`
+holds the kind of source, distinct from `type`.
+
+```yaml
+id:            # UUID (required)
+type: resource # Enum (required)
+title:         # String (required)
+owner: independent   # Reserved sentinel (required)
+status:        # Enum: Active | Unavailable | Archived (required)
+resource_type: # Enum: Documentation | GitHub Repository | PDF | Website | Video | Dataset (optional)
+url:           # String (optional)
+description:   # String (optional)
+tags:          # List<String> (optional)
+created_at:    # DateTime UTC (required)
+updated_at:    # DateTime UTC (required)
+```

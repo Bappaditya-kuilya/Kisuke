@@ -37,7 +37,7 @@ Given any point in previous work, Kisuke reconstructs the working context necess
 ## Goals
 
 - Reduce context switching cost.
-- Resume work in under two minutes.
+- Resume work in under two seconds (warm cache).
 - Reconstruct context instead of displaying notes.
 - Operate offline for core functionality.
 - Integrate with existing tools.

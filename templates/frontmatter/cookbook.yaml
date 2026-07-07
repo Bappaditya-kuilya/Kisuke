@@ -1,1 +1,18 @@
-# TODO
+# Cookbook Frontmatter Schema
+
+Matches docs/architecture/06-data-model.md (Cookbook Schema) and the Universal
+Entity Schema. `owner` is the reserved sentinel `kisuke-core`.
+
+```yaml
+id:            # UUID (required)
+type: cookbook # Enum (required)
+title:         # String (required)
+owner: kisuke-core   # Reserved sentinel (required)
+status:        # Enum: Active | Archived (required)
+content:       # String (optional)
+category:      # String (optional)
+tags:          # List<String> (optional)
+references:    # List<UUID> (optional)
+created_at:    # DateTime UTC (required)
+updated_at:    # DateTime UTC (required)
+```

@@ -128,13 +128,7 @@ Complexity belongs in adapters and plugins.
 
 # Repository Authority
 
-When conflicts occur:
-
-1. Constitution
-2. ADRs
-3. Master Specification
-4. Engineering Documents
-5. Source Code
+The canonical authority order is defined once, in docs/foundation/01-constitution.md, § Authority. It is not restated here to avoid drift.
 
 Code never overrides documentation.
 
@@ -202,16 +196,7 @@ Implementation never skips documentation.
 
 # Milestones
 
-- M0 — Repository
-- M1 — Domain Core
-- M2 — Storage
-- M3 — CLI
-- M4 — Resume Engine
-- M5 — Search
-- M6 — Reviews
-- M7 — Integrations
-- M8 — AI
-- M9 — Plugins
+The canonical milestone order is defined once, in docs/execution/13-roadmap.md. It is not restated here to avoid drift; consult that document for the full M0–M11 sequence and exit criteria.
 
 Each milestone must satisfy its acceptance criteria before the next begins.
 
@@ -221,7 +206,7 @@ Each milestone must satisfy its acceptance criteria before the next begins.
 
 Kisuke is successful when it can:
 
-- Resume any project in under two minutes.
+- Resume any project in under two seconds (warm cache).
 - Preserve working context accurately.
 - Operate offline without AI.
 - Integrate with existing tools.

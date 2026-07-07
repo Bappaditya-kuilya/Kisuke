@@ -1,8 +1,14 @@
 ---
 id:
-project:
-status: accepted
-created:
+type: decision
+title:
+owner:
+status:
+decision:
+reason:
+alternatives:
+created_at:
+updated_at:
 ---
 
 # Decision

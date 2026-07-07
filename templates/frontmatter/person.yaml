@@ -1,0 +1,19 @@
+# Person Frontmatter Schema
+
+Matches docs/architecture/06-data-model.md (Person Schema) and the Universal
+Entity Schema. `owner` is the reserved sentinel `independent`.
+
+```yaml
+id:            # UUID (required)
+type: person   # Enum (required)
+title:         # String — person's name (required)
+owner: independent   # Reserved sentinel (required)
+status: Active # Enum: Active | Archived (required)
+role:          # String (optional)
+organization:  # String (optional)
+email:         # String (optional)
+links:         # List<String> (optional)
+notes:         # String (optional)
+created_at:    # DateTime UTC (required)
+updated_at:    # DateTime UTC (required)
+```

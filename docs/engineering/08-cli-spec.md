@@ -72,6 +72,7 @@ kisuke knowledge
 kisuke cookbook
 kisuke decision
 kisuke meeting
+kisuke person
 kisuke resource
 kisuke review
 kisuke search
@@ -200,6 +201,7 @@ Options
 --knowledge
 --decision
 --resource
+--person
 ```
 
 ---
@@ -210,6 +212,16 @@ Options
 kisuke resource add
 kisuke resource list
 kisuke resource open
+```
+
+---
+
+# Person
+
+```
+kisuke person add
+kisuke person list
+kisuke person show
 ```
 
 ---

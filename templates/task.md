@@ -1,10 +1,15 @@
 ---
 id:
-project:
-status: todo
+type: task
+title:
+owner:
+status:
 priority:
-created:
-updated:
+due_date:
+estimated_time:
+references:
+created_at:
+updated_at:
 ---
 
 # Description

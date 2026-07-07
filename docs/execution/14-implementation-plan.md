@@ -49,7 +49,7 @@ No stage may be skipped.
 
 ---
 
-# Phase 1 — Foundation
+# Phase 1 — Repository
 
 Objective
 
@@ -247,6 +247,26 @@ Tasks
 Deliverable
 
 Stable plugin architecture.
+
+---
+
+# Phase 11 — Polish
+
+Objective
+
+Prepare for production release.
+
+Tasks
+
+- Performance optimization
+- Documentation review
+- Security audit
+- Bug fixing
+- Packaging
+
+Deliverable
+
+Release candidate.
 
 ---
 

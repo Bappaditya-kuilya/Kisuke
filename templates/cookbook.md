@@ -1,9 +1,14 @@
 ---
 id:
+type: cookbook
+title:
+owner: kisuke-core
+status:
 category:
 tags:
-created:
-updated:
+references:
+created_at:
+updated_at:
 ---
 
 # Problem

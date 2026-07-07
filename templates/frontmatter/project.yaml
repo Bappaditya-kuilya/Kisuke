@@ -1,1 +1,23 @@
-# TODO
+# Project Frontmatter Schema
+
+Matches docs/architecture/06-data-model.md (Project Schema) and the Universal
+Entity Schema. `owner` holds the UUID of the owning Mission.
+
+```yaml
+id:            # UUID (required)
+type: project  # Enum (required)
+title:         # String (required)
+owner:         # UUID of owning Mission (required)
+status:        # Enum: Planning | Active | Blocked | Paused | Completed | Archived (required)
+description:   # String (optional)
+priority:      # Enum (optional)
+next_action:   # UUID (optional)
+tasks:         # List<UUID> (optional)
+knowledge:     # List<UUID> (optional)
+decisions:     # List<UUID> (optional)
+meetings:      # List<UUID> (optional)
+resources:     # List<UUID> (optional)
+people:        # List<UUID> (optional)
+created_at:    # DateTime UTC (required)
+updated_at:    # DateTime UTC (required)
+```

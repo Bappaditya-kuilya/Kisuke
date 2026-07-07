@@ -31,7 +31,7 @@ Supporting Documents
 | PROJECT_MANIFEST.md | Project overview and architectural intent |
 | IMPLEMENTATION_CONTRACT.md | Engineering rules |
 | CLAUDE.md | Claude Code operating instructions |
-| MASTER_SPECIFICATION.md | Complete architecture and product specification |
+| MASTER_SPECIFICATION.md | Navigation index into `docs/` (canonical specification) |
 | README.md | Repository introduction |
 | CHANGELOG.md | Version history |
 
@@ -98,6 +98,8 @@ docs/execution/
 | 15-coding-guidelines.md | Coding standards |
 | 16-testing-strategy.md | Testing strategy |
 | 17-glossary.md | Terminology |
+| 18-consistency-audit.md | Documentation consistency checklist |
+| 19-repository-layout.md | Canonical on-disk structure |
 | 99-architecture-audit.md | Final architecture validation |
 
 ---
@@ -171,69 +173,46 @@ Automated tests.
 
 # Authority Order
 
-When two documents disagree:
-
-```
-Constitution
-        ↓
-PROJECT_MANIFEST.md
-        ↓
-MASTER_SPECIFICATION.md
-        ↓
-ADRs
-        ↓
-Engineering Docs
-        ↓
-Implementation
-```
+The canonical authority order is defined once, in docs/foundation/01-constitution.md, § Authority. It is not restated here to avoid drift.
 
 Implementation never overrides documentation.
 
 ---
 
-# Development Order
+# Implementation Order
+
+There is exactly one implementation (build) order for Kisuke. It is defined once,
+in docs/execution/13-roadmap.md, and restated here as the single canonical order:
 
 ```
 Repository
         ↓
-Master Specification
+Domain
         ↓
-Architecture Review
+Storage
         ↓
-Documentation
+Parser & Validation
         ↓
-Implementation
+Search
         ↓
-Testing
+Resume
         ↓
-Release
+CLI
+        ↓
+Reviews
+        ↓
+Integrations
+        ↓
+AI
+        ↓
+Plugins
+        ↓
+Polish
 ```
 
----
-
-# Milestone Order
-
-```
-M0 Repository
-        ↓
-M1 Domain
-        ↓
-M2 Storage
-        ↓
-M3 CLI
-        ↓
-M4 Resume
-        ↓
-M5 Search
-        ↓
-M6 Review
-        ↓
-M7 Integrations
-        ↓
-M8 AI
-        ↓
-M9 Plugins
-```
+No other document restates or redefines this order. The engineering *process*
+(Idea → Specification → Implementation → Tests → Review → Merge) is a separate
+concern and is defined once in IMPLEMENTATION_CONTRACT.md, not here.
 
 ---
 

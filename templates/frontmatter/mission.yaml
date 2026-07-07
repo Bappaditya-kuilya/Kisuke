@@ -1,1 +1,18 @@
-# TODO
+# Mission Frontmatter Schema
+
+Matches docs/architecture/06-data-model.md (Mission Schema) and the Universal
+Entity Schema. `owner` is the reserved sentinel `kisuke-core`.
+
+```yaml
+id:            # UUID (required)
+type: mission  # Enum (required)
+title:         # String (required)
+owner: kisuke-core   # Reserved sentinel (required)
+status:        # Enum: Planning | Active | Completed | Archived (required)
+description:   # String (optional)
+priority:      # Enum (optional)
+projects:      # List<UUID> (optional)
+reviews:       # List<UUID> (optional)
+created_at:    # DateTime UTC (required)
+updated_at:    # DateTime UTC (required)
+```

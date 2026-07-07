@@ -1,10 +1,19 @@
 ---
 id:
-mission:
-status: active
+type: project
+title:
+owner:
+status:
 priority:
-created:
-updated:
+next_action:
+tasks:
+knowledge:
+decisions:
+meetings:
+resources:
+people:
+created_at:
+updated_at:
 ---
 
 # Goal
@@ -18,7 +27,3 @@ updated:
 # Knowledge
 
 # Decisions
-
-# Resources
-
-# Meetings

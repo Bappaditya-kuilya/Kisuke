@@ -1,0 +1,19 @@
+# Attachment Frontmatter Schema
+
+Matches docs/architecture/06-data-model.md (Attachment Schema) and the Universal
+Entity Schema. `owner` holds the UUID of the specific Parent Entity this
+Attachment is attached to.
+
+```yaml
+id:            # UUID (required)
+type: attachment # Enum (required)
+title:         # String (required, defaults to filename)
+owner:         # UUID of the specific Parent Entity (required)
+status:        # Enum: Active | Archived (required)
+filename:      # String (optional)
+mime_type:     # String (optional)
+size:          # Integer (optional)
+checksum:      # String (optional)
+created_at:    # DateTime UTC (required)
+updated_at:    # DateTime UTC (required)
+```

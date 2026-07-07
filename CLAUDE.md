@@ -32,14 +32,7 @@ Never guess.
 
 # Reading Order
 
-Before every task read:
-
-1. PROJECT_MANIFEST.md
-2. IMPLEMENTATION_CONTRACT.md
-3. DOCUMENT_INDEX.md
-4. MASTER_SPECIFICATION.md
-
-Then read only the documents required for the current milestone.
+The canonical reading order is defined once, in DOCUMENT_INDEX.md, § Reading Order. Follow it before every task, then read only the additional documents required for the current milestone.
 
 ---
 
@@ -234,7 +227,7 @@ Search:
 
 Resume:
 
-< 2 minutes of user interaction
+<2 seconds (warm cache)
 
 Incremental indexing only.
 

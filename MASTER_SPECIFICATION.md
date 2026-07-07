@@ -1,448 +1,59 @@
 # Kisuke Master Specification
 
-> **Status:** Draft v1
-> **Architecture:** Frozen
-> **Source of Truth:** This document
+> **Status:** Navigation Index (Frozen Architecture)
+> **Role:** Routing index into `docs/`
+> **Source of Truth:** `docs/` is the canonical specification.
 
 ---
 
-# 1. Vision
+# Purpose
 
-TODO
+This document is a **navigation index**. It does not restate specification content.
 
-# 2. Product Definition
+The canonical specification lives in `docs/`. Every section below routes to the
+authoritative document there. This preserves a single source of truth and avoids
+duplicated, drifting content.
 
-TODO
-
-# 3. Constitution
-
-TODO
-
-# 4. Core Principles
-
-TODO
-
-# 5. Domain Model
-
-TODO
-# 5. Domain Model
-
-## Purpose
-
-The Domain Model defines the canonical entities of Kisuke and the relationships between them.
-
-Every other document depends on this model.
+Authority is defined once, in `docs/foundation/01-constitution.md`, § Authority.
+That order is not restated here.
 
 ---
 
-## Core Entities
+# Section Routing
 
-### Mission
-
-Represents a long-term objective that guides priorities.
-
-Owner: Kisuke Core
-
----
-
-### Project
-
-A temporary endeavor with a defined beginning and end undertaken to achieve a unique outcome.
-
-Owner: Mission
-
----
-
-### Task
-
-A unit of work belonging to exactly one project.
-
-One active task may be designated as the Next Action.
-
-Owner: Project
+| § | Topic | Canonical Document |
+|---|-------|--------------------|
+| §1 | Vision | `docs/foundation/00-vision.md` |
+| §2 | Product Definition | `docs/foundation/02-product-definition.md` |
+| §3 | Constitution | `docs/foundation/01-constitution.md` |
+| §4 | Core Principles | `docs/foundation/00-vision.md`, `docs/foundation/02-product-definition.md` |
+| §5 | Domain Model | `docs/architecture/04-domain-model.md` |
+| §6 | Information Architecture | `docs/architecture/05-information-architecture.md` |
+| §7 | Data Model | `docs/architecture/06-data-model.md` |
+| §8 | User Flows | `docs/architecture/07-user-flows.md` |
+| §9 | CLI Specification | `docs/engineering/08-cli-spec.md` |
+| §10 | Integrations | `docs/engineering/09-integrations.md` |
+| §11 | AI Abstraction | `docs/engineering/10-ai-abstraction.md` |
+| §12 | Security | `docs/engineering/11-security.md` |
+| §13 | Engineering Architecture | `docs/engineering/12-engineering-architecture.md` |
+| §14 | Roadmap | `docs/execution/13-roadmap.md` |
+| §15 | Implementation Plan | `docs/execution/14-implementation-plan.md` |
+| §16 | Coding Guidelines | `docs/execution/15-coding-guidelines.md` |
+| §17 | Testing Strategy | `docs/execution/16-testing-strategy.md` |
+| §18 | ADR / RFC Index | `adrs/`, `rfcs/` |
+| §19 | Architecture Audit | `docs/execution/99-architecture-audit.md` |
 
 ---
 
-### Knowledge
+# Notes
 
-Persistent information created or collected to support execution.
-
-Owner: Project
-
----
-
-### Cookbook
-
-Evergreen reusable knowledge independent of a single project.
-
-Owner: Kisuke Core
+- `MASTER_SPECIFICATION.md` is intentionally thin. It exists only to route.
+- Implementation traces to `docs/`, not to this file.
+- Any content copied here would drift; therefore no specification content is
+  duplicated here.
 
 ---
 
-### Decision
+# Final Principle
 
-A recorded architectural, technical, or operational decision.
-
-Owner: Project
-
----
-
-### Meeting
-
-A time-bounded discussion that may reference projects, tasks, people, resources and decisions.
-
-Owner: Independent
-
----
-
-### Person
-
-Represents an individual involved in work.
-
-Owner: Independent
-
----
-
-### Resource
-
-Represents an external source.
-
-Examples:
-
-- Documentation
-- GitHub Repository
-- PDF
-- Website
-- Video
-- Dataset
-
-Owner: Independent
-
----
-
-### Review
-
-Represents a structured evaluation of work.
-
-Types:
-
-- Morning
-- Weekly
-- Monthly
-- Quarterly
-
-Owner: Mission
-
----
-
-### Attachment
-
-Binary assets.
-
-Examples:
-
-- Images
-- PDFs
-- Files
-
-Owner: Parent Entity
-
----
-
-# Relationships
-
-Mission
-
-↓
-
-Projects
-
-Project
-
-↓
-
-Tasks
-
-↓
-
-Knowledge
-
-↓
-
-Decisions
-
-↓
-
-Resources
-
-↓
-
-Meetings
-
-↓
-
-People
-
-Meeting
-
-↓
-
-Projects
-
-↓
-
-Tasks
-
-↓
-
-Decisions
-
-↓
-
-People
-
-↓
-
-Resources
-
-Knowledge
-
-↓
-
-Resources
-
-↓
-
-Projects
-
-Decision
-
-↓
-
-Projects
-
-↓
-
-Resources
-
-↓
-
-Meetings
-
-Cookbook
-
-↓
-
-Knowledge
-
-↓
-
-Resources
-
-Review
-
-↓
-
-Mission
-
-↓
-
-Projects
-
-↓
-
-Tasks
-
----
-
-# Ownership Rules
-
-Every entity has exactly one owner.
-
-Relationships never imply ownership.
-
-Ownership never changes implicitly.
-
----
-
-# Invariants
-
-- One owner per entity.
-- References instead of duplication.
-- No circular ownership.
-- AI owns nothing.
-- IDs are globally unique.
-- Relationships are directional.
-- Markdown remains the source of truth.
-
----
-
-# Entity Lifecycle
-
-Mission
-
-Planning
-
-↓
-
-Active
-
-↓
-
-Completed
-
-↓
-
-Archived
-
-Project
-
-Planning
-
-↓
-
-Active
-
-↓
-
-Blocked
-
-↓
-
-Paused
-
-↓
-
-Completed
-
-↓
-
-Archived
-
-Task
-
-Todo
-
-↓
-
-In Progress
-
-↓
-
-Done
-
-↓
-
-Archived
-
-Knowledge
-
-Draft
-
-↓
-
-Active
-
-↓
-
-Deprecated
-
-↓
-
-Archived
-
-Decision
-
-Proposed
-
-↓
-
-Accepted
-
-↓
-
-Superseded
-
-↓
-
-Archived
-
-Meeting
-
-Scheduled
-
-↓
-
-Completed
-
-↓
-
-Archived
-
-Review
-
-Planned
-
-↓
-
-Completed
-
-↓
-
-Archived
-
-# 6. Information Architecture
-
-TODO
-
-# 7. Data Model
-
-TODO
-
-# 8. User Flows
-
-TODO
-
-# 9. CLI Specification
-
-TODO
-
-# 10. Integrations
-
-TODO
-
-# 11. AI Abstraction
-
-TODO
-
-# 12. Security
-
-TODO
-
-# 13. Engineering Architecture
-
-TODO
-
-# 14. Roadmap
-
-TODO
-
-# 15. Implementation Plan
-
-TODO
-
-# 16. Coding Guidelines
-
-TODO
-
-# 17. Testing Strategy
-
-TODO
-
-# 18. ADR Index
-
-TODO
-
-# 19. Architecture Audit
-
-TODO
+One specification, one authority, one source of truth: `docs/`.

@@ -16,14 +16,7 @@ Every engineering decision must preserve the architecture defined in the Master 
 
 # Source of Truth
 
-Priority order:
-
-1. Constitution
-2. PROJECT_MANIFEST.md
-3. MASTER_SPECIFICATION.md
-4. ADRs
-5. Engineering Documents
-6. Source Code
+The canonical authority order is defined once, in docs/foundation/01-constitution.md, § Authority. It is not restated here to avoid drift.
 
 When conflicts exist, the higher document wins.
 

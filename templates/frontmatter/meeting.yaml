@@ -1,1 +1,22 @@
-# TODO
+# Meeting Frontmatter Schema
+
+Matches docs/architecture/06-data-model.md (Meeting Schema) and the Universal
+Entity Schema. `owner` is the reserved sentinel `independent`. `people` holds
+Person references (renamed from the legacy `participants` field).
+
+```yaml
+id:            # UUID (required)
+type: meeting  # Enum (required)
+title:         # String (required)
+owner: independent   # Reserved sentinel (required)
+status:        # Enum: Scheduled | Completed | Archived (required)
+date:          # Date (optional)
+people:        # List<UUID> (optional)
+projects:      # List<UUID> (optional)
+tasks:         # List<UUID> (optional)
+decisions:     # List<UUID> (optional)
+resources:     # List<UUID> (optional)
+summary:       # String (optional)
+created_at:    # DateTime UTC (required)
+updated_at:    # DateTime UTC (required)
+```

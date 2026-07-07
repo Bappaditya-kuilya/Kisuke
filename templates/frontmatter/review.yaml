@@ -1,1 +1,21 @@
-# TODO
+# Review Frontmatter Schema
+
+Matches docs/architecture/06-data-model.md (Review Schema) and the Universal
+Entity Schema. `owner` holds the UUID of the owning Mission. `review_type` holds
+the kind (Morning | Weekly | Monthly | Quarterly), distinct from `type`.
+
+```yaml
+id:            # UUID (required)
+type: review   # Enum (required)
+title:         # String (required)
+owner:         # UUID of owning Mission (required)
+status:        # Enum: Planned | Completed | Archived (required)
+review_type:   # Enum: Morning | Weekly | Monthly | Quarterly (required)
+date:          # Date (optional)
+summary:       # String (optional)
+completed_projects: # List<UUID> (optional)
+blocked_projects:   # List<UUID> (optional)
+next_actions:       # List<UUID> (optional)
+created_at:    # DateTime UTC (required)
+updated_at:    # DateTime UTC (required)
+```

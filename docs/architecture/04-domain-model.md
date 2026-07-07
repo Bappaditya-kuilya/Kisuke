@@ -361,6 +361,8 @@ Parent Entity
 └── Attachment
 ```
 
+The Kisuke Core, Independent, and Parent Entity owner categories are ownership *categories*, not entity instances — they have no UUID of their own. How each is represented in the `owner` field of a stored entity is defined in docs/architecture/06-data-model.md, Owner Value Rules.
+
 ---
 
 ## Ownership Rules
@@ -443,6 +445,7 @@ Incoming
 
 - Project
 - Meeting
+- Review
 
 ---
 
@@ -499,7 +502,7 @@ Outgoing
 
 Incoming
 
-None
+- Project
 
 ---
 
@@ -610,11 +613,15 @@ Review --> Task
 | Cookbook → Knowledge | 1:N |
 | Cookbook → Resource | N:N |
 | Knowledge → Resource | N:N |
+| Decision → Project | N:N |
 | Decision → Resource | N:N |
 | Decision → Meeting | N:N |
+| Meeting → Project | N:N |
 | Meeting → Task | N:N |
+| Meeting → Decision | N:N |
 | Meeting → Person | N:N |
 | Meeting → Resource | N:N |
+| Review → Mission | N:N |
 | Review → Project | N:N |
 | Review → Task | N:N |
 
@@ -713,9 +720,13 @@ stateDiagram-v2
 
 ## Cookbook
 
-No lifecycle defined.
+```mermaid
+stateDiagram-v2
+    Active
+    Archived
+```
 
-Cookbook entries remain active until explicitly archived.
+Cookbook entries remain Active until explicitly archived.
 
 ---
 
@@ -744,13 +755,24 @@ stateDiagram-v2
 
 ## Person
 
-No lifecycle defined.
+```mermaid
+stateDiagram-v2
+    Active
+    Archived
+```
 
 ---
 
 ## Resource
 
-No lifecycle defined.
+```mermaid
+stateDiagram-v2
+    Active
+    Unavailable
+    Archived
+```
+
+`Unavailable` reflects that the external source the Resource points to can no longer be reached, while its metadata is preserved (see docs/architecture/07-user-flows.md, Failure Cases § Missing Resource).
 
 ---
 
@@ -767,7 +789,11 @@ stateDiagram-v2
 
 ## Attachment
 
-No lifecycle defined.
+```mermaid
+stateDiagram-v2
+    Active
+    Archived
+```
 
 ---
 

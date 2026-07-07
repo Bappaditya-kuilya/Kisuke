@@ -20,14 +20,18 @@ This is the highest governing document of Kisuke.
 
 Nothing may override it except an approved constitutional amendment.
 
+This is the single canonical authority order for the entire repository. It is defined here once and cross-referenced everywhere else — no other document restates or redefines it.
+
 Priority:
 
-1. Constitution
-2. PROJECT_MANIFEST.md
-3. MASTER_SPECIFICATION.md
-4. ADRs
-5. Engineering Documents
+1. Constitution (this document)
+2. ADRs (`adrs/`)
+3. Domain Model and Architecture documents (`docs/architecture/`)
+4. Engineering documents (`docs/engineering/`)
+5. Execution documents (`docs/execution/`)
 6. Source Code
+
+`PROJECT_MANIFEST.md`, `IMPLEMENTATION_CONTRACT.md`, `DOCUMENT_INDEX.md`, and `MASTER_SPECIFICATION.md` are navigation and process documents. They summarize and route to the documents above; they are not a separate content tier and never override them. See `MASTER_SPECIFICATION.md` for its role as a navigation index into `docs/`, which is the canonical specification (docs/foundation/02-product-definition.md and DOCUMENT_INDEX.md explain this in full).
 
 ---
 

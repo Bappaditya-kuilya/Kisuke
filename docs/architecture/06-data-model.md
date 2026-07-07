@@ -29,21 +29,37 @@ The data model must be:
 
 # Universal Entity Schema
 
-Every entity contains these fields.
+Every entity contains these fields. This schema applies to all eleven entities defined in the Domain Model, without exception.
 
 | Field | Type | Required | Description |
 |--------|------|----------|-------------|
 | id | UUID | ✓ | Globally unique identifier |
 | type | Enum | ✓ | Entity type |
 | title | String | ✓ | Human-readable title |
-| owner | UUID | ✓ | Owning entity |
-| status | Enum | ✓ | Current lifecycle state |
+| owner | UUID or Reserved Owner Value | ✓ | Owning entity — see Owner Value Rules |
+| status | Enum | ✓ | Current lifecycle state — see Entity Lifecycles |
 | created_at | DateTime | ✓ | Creation timestamp |
 | updated_at | DateTime | ✓ | Last modification |
-| archived | Boolean | ✓ | Archive flag |
 | tags | List<String> | Optional | User tags |
 | references | List<UUID> | Optional | Explicit relationships |
 | attachments | List<UUID> | Optional | Attached binary assets |
+
+There is no separate `archived` boolean. Archive state is one value of the `status` enum (`Archived`), not a second, independently-settable field. An entity is archived if, and only if, `status = Archived`. This applies uniformly, including to the four entities (Cookbook, Person, Resource, Attachment) that previously had no defined lifecycle — see Entity Lifecycles below, which now defines one for each.
+
+---
+
+# Owner Value Rules
+
+Every entity's `owner` field must be a concrete value, even when the owner is not another domain entity instance.
+
+| Owner Category | `owner` value |
+|---|---|
+| A specific domain entity instance (e.g. a Project owning a Task) | The UUID of that entity instance |
+| Kisuke Core (Mission, Cookbook) | The reserved sentinel value `kisuke-core` |
+| Independent (Meeting, Person, Resource) | The reserved sentinel value `independent` |
+| Parent Entity (Attachment) | The UUID of the specific entity instance it is attached to (see Attachment Schema, field `owner`) |
+
+Reserved sentinel values (`kisuke-core`, `independent`) are not UUIDs and never resolve to an entity record. Validation logic must treat them as valid, terminal owner values rather than as references to be dereferenced.
 
 ---
 
@@ -51,7 +67,9 @@ Every entity contains these fields.
 
 ```yaml
 id:
+type: mission
 title:
+owner: kisuke-core
 description:
 status:
 priority:
@@ -67,8 +85,9 @@ updated_at:
 
 ```yaml
 id:
-mission:
+type: project
 title:
+owner: mission-id
 description:
 status:
 priority:
@@ -83,14 +102,17 @@ created_at:
 updated_at:
 ```
 
+`owner` holds the ID of the owning Mission. The `mission` field used in earlier drafts is superseded by the Universal Entity Schema's `owner` field — there is one field for this relationship, not two.
+
 ---
 
 # Task Schema
 
 ```yaml
 id:
-project:
+type: task
 title:
+owner: project-id
 description:
 status:
 priority:
@@ -101,14 +123,18 @@ created_at:
 updated_at:
 ```
 
+`owner` holds the ID of the owning Project.
+
 ---
 
 # Knowledge Schema
 
 ```yaml
 id:
-project:
+type: knowledge
 title:
+owner: project-id
+status:
 summary:
 content:
 resources:
@@ -117,13 +143,18 @@ created_at:
 updated_at:
 ```
 
+`owner` holds the ID of the owning Project.
+
 ---
 
 # Cookbook Schema
 
 ```yaml
 id:
+type: cookbook
 title:
+owner: kisuke-core
+status:
 content:
 category:
 tags:
@@ -138,8 +169,9 @@ updated_at:
 
 ```yaml
 id:
-project:
+type: decision
 title:
+owner: project-id
 decision:
 reason:
 alternatives:
@@ -148,15 +180,20 @@ created_at:
 updated_at:
 ```
 
+`owner` holds the ID of the owning Project.
+
 ---
 
 # Meeting Schema
 
 ```yaml
 id:
+type: meeting
 title:
+owner: independent
+status:
 date:
-participants:
+people:
 projects:
 tasks:
 decisions:
@@ -166,13 +203,18 @@ created_at:
 updated_at:
 ```
 
+`people` references the Person entities attending the meeting. This field was previously named `participants`; it is renamed here for consistency with the Domain Model's Meeting → Person relationship, which is the only relationship of its kind in this document. `people` contains references (IDs) only, per the Reference Rules.
+
 ---
 
 # Person Schema
 
 ```yaml
 id:
-name:
+type: person
+title:
+owner: independent
+status:
 role:
 organization:
 email:
@@ -182,14 +224,19 @@ created_at:
 updated_at:
 ```
 
+`title` holds the person's name (the Universal Entity Schema's human-readable title field; there is no separate `name` field).
+
 ---
 
 # Resource Schema
 
 ```yaml
 id:
+type: resource
 title:
-type:
+owner: independent
+status:
+resource_type:
 url:
 description:
 tags:
@@ -197,14 +244,19 @@ created_at:
 updated_at:
 ```
 
+`resource_type` holds the kind of source being referenced (Documentation, GitHub Repository, PDF, Website, Video, Dataset — see Domain Model, Resource entity). It is distinct from the Universal Entity Schema's `type` field, which always holds the entity type (`resource`) for every Resource instance. Earlier drafts used `type` for both purposes; this schema resolves that collision.
+
 ---
 
 # Review Schema
 
 ```yaml
 id:
-mission:
-type:
+type: review
+title:
+owner: mission-id
+status:
+review_type:
 date:
 summary:
 completed_projects:
@@ -214,19 +266,27 @@ created_at:
 updated_at:
 ```
 
+`owner` holds the ID of the owning Mission. `review_type` holds the Review's kind (Morning, Weekly, Monthly, Quarterly), distinct from the Universal Entity Schema's `type` field (always `review`), for the same reason described under the Resource Schema.
+
 ---
 
 # Attachment Schema
 
 ```yaml
 id:
-parent:
+type: attachment
+title:
+owner:
+status:
 filename:
 mime_type:
 size:
 checksum:
 created_at:
+updated_at:
 ```
+
+`owner` holds the ID of the specific Parent Entity instance this Attachment is attached to (the field previously named `parent`; renamed for consistency with the Universal Entity Schema). `title` defaults to `filename` if not otherwise set.
 
 ---
 
@@ -274,8 +334,9 @@ Fields:
 Optional:
 
 - completed_at
-- archived_at
 - due_at
+
+There is no `archived_at` field. The transition into the `Archived` status is recorded by `updated_at` like any other status transition; introducing a separate timestamp for one specific status value would duplicate what `status` + `updated_at` already record together.
 
 ---
 
@@ -340,6 +401,37 @@ Optional:
 
 - Planned
 - Completed
+- Archived
+
+---
+
+## Cookbook
+
+- Active
+- Archived
+
+---
+
+## Person
+
+- Active
+- Archived
+
+---
+
+## Resource
+
+- Active
+- Unavailable
+- Archived
+
+`Unavailable` covers the case where the referenced external source can no longer be reached (see docs/architecture/07-user-flows.md, Failure Cases § Missing Resource: "Keep metadata. Mark resource unavailable."). This is a status transition, not a separate flag.
+
+---
+
+## Attachment
+
+- Active
 - Archived
 
 ---

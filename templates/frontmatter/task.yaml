@@ -1,1 +1,19 @@
-# TODO
+# Task Frontmatter Schema
+
+Matches docs/architecture/06-data-model.md (Task Schema) and the Universal
+Entity Schema. `owner` holds the UUID of the owning Project.
+
+```yaml
+id:            # UUID (required)
+type: task     # Enum (required)
+title:         # String (required)
+owner:         # UUID of owning Project (required)
+status:        # Enum: Todo | In Progress | Done | Archived (required)
+description:   # String (optional)
+priority:      # Enum (optional)
+due_date:      # Date (optional)
+estimated_time:# Duration (optional)
+references:    # List<UUID> (optional)
+created_at:    # DateTime UTC (required)
+updated_at:    # DateTime UTC (required)
+```

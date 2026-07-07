@@ -134,18 +134,7 @@ Release
 
 # Milestones
 
-| Milestone | Description |
-|-----------|-------------|
-| M0 | Repository |
-| M1 | Domain Core |
-| M2 | Storage |
-| M3 | CLI |
-| M4 | Resume Engine |
-| M5 | Search |
-| M6 | Reviews |
-| M7 | Integrations |
-| M8 | AI |
-| M9 | Plugins |
+The canonical milestone order is defined once, in `docs/execution/13-roadmap.md`. It is not restated here to avoid drift.
 
 ---
 

@@ -1,1 +1,17 @@
-# TODO
+# Decision Frontmatter Schema
+
+Matches docs/architecture/06-data-model.md (Decision Schema) and the Universal
+Entity Schema. `owner` holds the UUID of the owning Project.
+
+```yaml
+id:            # UUID (required)
+type: decision # Enum (required)
+title:         # String (required)
+owner:         # UUID of owning Project (required)
+status:        # Enum: Proposed | Accepted | Superseded | Archived (required)
+decision:      # String (optional)
+reason:        # String (optional)
+alternatives:  # String (optional)
+created_at:    # DateTime UTC (required)
+updated_at:    # DateTime UTC (required)
+```
