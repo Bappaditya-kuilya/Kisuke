@@ -31,7 +31,7 @@ function GithubCta() {
                 <Star className="w-4 h-4 ml-0.5" />
               </Button>
               <Button variant="secondary" size="lg">
-                <a href="/docs/getting-started">Read the Docs</a>
+                <a href="/docs">Read the Docs</a>
                 <ArrowRight className="w-4 h-4 ml-0.5" />
               </Button>
             </div>

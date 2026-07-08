@@ -377,7 +377,7 @@ export default function DocsPage() {
           <Reveal delay={500}>
             <div className="mt-10">
               <Link
-                href="/docs/getting-started"
+                href="#quick-start"
                 className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent-hover transition-colors duration-100"
               >
                 Read the full getting started guide
@@ -433,7 +433,7 @@ export default function DocsPage() {
           <Reveal delay={200}>
             <div className="mt-8">
               <Link
-                href="/docs/cli"
+                href="#cli-cheat-sheet"
                 className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent-hover transition-colors duration-100"
               >
                 Full CLI reference

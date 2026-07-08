@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/og.png",
+        url: "/og.svg",
         width: 1200,
         height: 630,
         alt: "Kisuke — Local-First Context Reconstruction",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     title: "Kisuke — Local-First Context Reconstruction",
     description:
       "Reconstruct context from your code, commits, documents, and conversations. Everything stays local. AI is optional.",
-    images: ["/og.png"],
+    images: ["/og.svg"],
   },
   robots: {
     index: true,
