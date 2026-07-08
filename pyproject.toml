@@ -2,8 +2,33 @@
 name = "kisuke"
 version = "0.1.0"
 description = "Local-first context reconstruction engine"
+readme = "README.md"
+license = "MIT"
 requires-python = ">=3.12"
+authors = [
+    { name = "Bappaditya-kuilya" },
+]
+keywords = ["context", "resume", "local-first", "markdown", "knowledge-management"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/kisuke/kisuke"
+Repository = "https://github.com/kisuke/kisuke"
+Changelog = "https://github.com/kisuke/kisuke/blob/main/CHANGELOG.md"
+
+[project.scripts]
+kisuke = "kisuke.cli.main:main"
 
 [dependency-groups]
 dev = [
