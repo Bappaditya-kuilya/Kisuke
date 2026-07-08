@@ -16,19 +16,39 @@ NOPE = "77777777-7777-7777-7777-777777777777"
 
 def _mission(id: str = M) -> dict:
     return {
-        "id": id, "type": "mission", "title": "M", "owner": "kisuke-core",
-        "status": "Active", "tags": [], "references": [], "attachments": [],
-        "created_at": TS, "updated_at": TS,
+        "id": id,
+        "type": "mission",
+        "title": "M",
+        "owner": "kisuke-core",
+        "status": "Active",
+        "tags": [],
+        "references": [],
+        "attachments": [],
+        "created_at": TS,
+        "updated_at": TS,
     }
 
 
 def _project(owner: str, **extra: object) -> dict:
     base = {
-        "id": "22222222-2222-2222-2222-222222222222", "type": "project",
-        "title": "P", "owner": owner, "status": "Active", "priority": None,
-        "next_action": None, "tasks": [], "knowledge": [], "decisions": [],
-        "meetings": [], "resources": [], "people": [], "tags": [],
-        "references": [], "attachments": [], "created_at": TS, "updated_at": TS,
+        "id": "22222222-2222-2222-2222-222222222222",
+        "type": "project",
+        "title": "P",
+        "owner": owner,
+        "status": "Active",
+        "priority": None,
+        "next_action": None,
+        "tasks": [],
+        "knowledge": [],
+        "decisions": [],
+        "meetings": [],
+        "resources": [],
+        "people": [],
+        "tags": [],
+        "references": [],
+        "attachments": [],
+        "created_at": TS,
+        "updated_at": TS,
     }
     base.update(extra)
     return base

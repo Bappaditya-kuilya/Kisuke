@@ -35,8 +35,11 @@ def _md(et_value: str, name: str, fm: dict, body: str, root: Path) -> Path:
 
 def _full(**kw: object) -> dict:
     base = {
-        "tags": [], "references": [], "attachments": [],
-        "created_at": "2024-01-01T00:00:00+00:00", "updated_at": "2024-01-01T00:00:00+00:00",
+        "tags": [],
+        "references": [],
+        "attachments": [],
+        "created_at": "2024-01-01T00:00:00+00:00",
+        "updated_at": "2024-01-01T00:00:00+00:00",
     }
     base.update(kw)
     return base
@@ -52,18 +55,45 @@ def valid_repo(tmp_path: Path) -> Path:
 
 @pytest.fixture
 def filter_repo(tmp_path: Path) -> Path:
-    _md("mission", "m1.md", _full(
-        id="11111111-1111-1111-1111-111111111111", type="mission",
-        title="Alpha shared", owner="kisuke-core", status="Active",
-    ), "", tmp_path)
-    _md("cookbook", "c1.md", _full(
-        id="22222222-2222-2222-2222-222222222222", type="cookbook",
-        title="Beta shared", owner="kisuke-core", status="Active",
-    ), "", tmp_path)
-    _md("person", "p1.md", _full(
-        id="33333333-3333-3333-3333-333333333333", type="person",
-        title="Gamma shared", owner="independent", status="Active",
-    ), "", tmp_path)
+    _md(
+        "mission",
+        "m1.md",
+        _full(
+            id="11111111-1111-1111-1111-111111111111",
+            type="mission",
+            title="Alpha shared",
+            owner="kisuke-core",
+            status="Active",
+        ),
+        "",
+        tmp_path,
+    )
+    _md(
+        "cookbook",
+        "c1.md",
+        _full(
+            id="22222222-2222-2222-2222-222222222222",
+            type="cookbook",
+            title="Beta shared",
+            owner="kisuke-core",
+            status="Active",
+        ),
+        "",
+        tmp_path,
+    )
+    _md(
+        "person",
+        "p1.md",
+        _full(
+            id="33333333-3333-3333-3333-333333333333",
+            type="person",
+            title="Gamma shared",
+            owner="independent",
+            status="Active",
+        ),
+        "",
+        tmp_path,
+    )
     return tmp_path
 
 
@@ -71,23 +101,33 @@ def make_bench_repo(tmp_path: Path, n: int = 200) -> Path:
     repo = FileRepository(tmp_path)
     mission = Mission(
         id=EntityId.from_string(str(uuid.UUID(int=1))),
-        title="Bench Mission", owner=Owner.kisuke_core(),
-        status=MissionStatus.ACTIVE, created_at=TS, updated_at=TS,
+        title="Bench Mission",
+        owner=Owner.kisuke_core(),
+        status=MissionStatus.ACTIVE,
+        created_at=TS,
+        updated_at=TS,
     )
     project = Project(
         id=EntityId.from_string(str(uuid.UUID(int=2))),
-        title="Bench Project", owner=Owner.of(mission.id),
-        status=ProjectStatus.ACTIVE, created_at=TS, updated_at=TS,
+        title="Bench Project",
+        owner=Owner.of(mission.id),
+        status=ProjectStatus.ACTIVE,
+        created_at=TS,
+        updated_at=TS,
     )
     repo.save(mission)
     repo.save(project)
     for i in range(n):
-        repo.save(Task(
-            id=EntityId.from_string(str(uuid.UUID(int=1000 + i))),
-            title=f"Bench task number {i} alpha",
-            owner=Owner.of(project.id),
-            status=TaskStatus.TODO, created_at=TS, updated_at=TS,
-        ))
+        repo.save(
+            Task(
+                id=EntityId.from_string(str(uuid.UUID(int=1000 + i))),
+                title=f"Bench task number {i} alpha",
+                owner=Owner.of(project.id),
+                status=TaskStatus.TODO,
+                created_at=TS,
+                updated_at=TS,
+            )
+        )
     return tmp_path
 
 

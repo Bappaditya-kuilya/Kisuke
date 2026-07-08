@@ -67,14 +67,32 @@ def test_empty_query_returns_empty(valid_repo: Path, tmp_path: Path) -> None:
 
 
 def test_title_match_ranks_above_body(tmp_path: Path) -> None:
-    _md("mission", "a.md", _full(
-        id="11111111-1111-1111-1111-111111111111", type="mission",
-        title="targetword alpha", owner="kisuke-core", status="Active",
-    ), "", tmp_path)
-    _md("mission", "b.md", _full(
-        id="22222222-2222-2222-2222-222222222222", type="mission",
-        title="Other title", owner="kisuke-core", status="Active",
-    ), "targetword beta body text", tmp_path)
+    _md(
+        "mission",
+        "a.md",
+        _full(
+            id="11111111-1111-1111-1111-111111111111",
+            type="mission",
+            title="targetword alpha",
+            owner="kisuke-core",
+            status="Active",
+        ),
+        "",
+        tmp_path,
+    )
+    _md(
+        "mission",
+        "b.md",
+        _full(
+            id="22222222-2222-2222-2222-222222222222",
+            type="mission",
+            title="Other title",
+            owner="kisuke-core",
+            status="Active",
+        ),
+        "targetword beta body text",
+        tmp_path,
+    )
     with SearchEngine(tmp_path / "s.db") as eng:
         eng.rebuild(tmp_path)
         results = eng.search("targetword")

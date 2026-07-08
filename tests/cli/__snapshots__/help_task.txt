@@ -1,0 +1,11 @@
+usage: kisuke task [-h] [--json] [--quiet] [--verbose]
+                   {add,list,next,done,move} ...
+
+positional arguments:
+  {add,list,next,done,move}
+
+options:
+  -h, --help            show this help message and exit
+  --json                machine-readable output
+  --quiet               suppress output
+  --verbose             verbose logging

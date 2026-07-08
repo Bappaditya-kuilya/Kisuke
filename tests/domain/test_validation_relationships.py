@@ -117,14 +117,29 @@ def test_valid_full_graph_passes() -> None:
 
     project = _project(
         owner=Owner.of(mission.id),
-        tasks=[task.id], knowledge=[knowledge.id], decisions=[decision.id],
-        meetings=[meeting.id], resources=[resource.id], people=[person.id],
+        tasks=[task.id],
+        knowledge=[knowledge.id],
+        decisions=[decision.id],
+        meetings=[meeting.id],
+        resources=[resource.id],
+        people=[person.id],
         next_action=task.id,
     )
     meeting = _meeting(projects=[project.id], tasks=[task.id], people=[person.id])
     knowledge = make_knowledge(owner=Owner.of(project.id), resources=[resource.id])
 
-    validate_entities([
-        mission, project, task, knowledge, cookbook, decision,
-        meeting, person, resource, review, attachment,
-    ])
+    validate_entities(
+        [
+            mission,
+            project,
+            task,
+            knowledge,
+            cookbook,
+            decision,
+            meeting,
+            person,
+            resource,
+            review,
+            attachment,
+        ]
+    )

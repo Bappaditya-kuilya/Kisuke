@@ -1,0 +1,66 @@
+........................................................................ [ 32%]
+........................................................................ [ 64%]
+........................................................................ [ 96%]
+........                                                                 [100%]
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.3-final-0 ________________
+
+Name                                                Stmts   Miss  Cover   Missing
+---------------------------------------------------------------------------------
+src/kisuke/__init__.py                                  1      0   100%
+src/kisuke/__main__.py                                  3      3     0%   1-4
+src/kisuke/application/__init__.py                     12      0   100%
+src/kisuke/application/config_app.py                   50      3    94%   51-52, 67
+src/kisuke/application/doctor.py                       48     10    79%   46, 54-58, 60, 65, 71-72
+src/kisuke/application/entities.py                    111     12    89%   64-71, 78, 93-95
+src/kisuke/application/index_app.py                    23      1    96%   35
+src/kisuke/application/plugins.py                      45      3    93%   35-36, 49
+src/kisuke/application/resume_app.py                   45     17    62%   28-36, 39-42, 55-57, 62
+src/kisuke/application/reviews.py                      77      3    96%   43, 110-111
+src/kisuke/application/search_app.py                   19      3    84%   32-34
+src/kisuke/application/tasks.py                        69     11    84%   43-48, 56, 58, 60-62
+src/kisuke/application/validation_app.py                9      0   100%
+src/kisuke/application/workspace.py                    41      6    85%   28-32, 43
+src/kisuke/cli/__init__.py                              2      0   100%
+src/kisuke/cli/commands.py                            402     15    96%   107, 128, 153, 172, 201-202, 264, 333, 377, 705-710
+src/kisuke/cli/completion.py                           12      0   100%
+src/kisuke/cli/errors.py                               34      5    85%   47, 49, 52-54
+src/kisuke/cli/format.py                               16      1    94%   29
+src/kisuke/cli/main.py                                 19      1    95%   32
+src/kisuke/domain/__init__.py                          10      0   100%
+src/kisuke/domain/entities.py                         112      0   100%
+src/kisuke/domain/exceptions.py                        10      0   100%
+src/kisuke/domain/ids.py                               22      0   100%
+src/kisuke/domain/lifecycle.py                         64      0   100%
+src/kisuke/domain/owner.py                             29      0   100%
+src/kisuke/domain/relationships.py                     11      0   100%
+src/kisuke/domain/timestamp.py                         18      0   100%
+src/kisuke/domain/validation.py                       104      0   100%
+src/kisuke/infrastructure/__init__.py                   0      0   100%
+src/kisuke/infrastructure/resume/__init__.py            5      0   100%
+src/kisuke/infrastructure/resume/model.py              25      0   100%
+src/kisuke/infrastructure/resume/ordering.py           18      2    89%   21, 25
+src/kisuke/infrastructure/resume/service.py           118      3    97%   74-76
+src/kisuke/infrastructure/search/__init__.py            6      0   100%
+src/kisuke/infrastructure/search/api.py                77      3    96%   70, 103, 110
+src/kisuke/infrastructure/search/index.py              43      0   100%
+src/kisuke/infrastructure/search/model.py              10      0   100%
+src/kisuke/infrastructure/search/ranking.py            19      0   100%
+src/kisuke/infrastructure/storage/__init__.py           5      0   100%
+src/kisuke/infrastructure/storage/frontmatter.py      103      6    94%   25, 50, 73-74, 91, 105
+src/kisuke/infrastructure/storage/interfaces.py        17      0   100%
+src/kisuke/infrastructure/storage/repository.py        61      1    98%   64
+src/kisuke/infrastructure/storage/serializer.py       123      1    99%   211
+src/kisuke/infrastructure/validation/__init__.py        7      0   100%
+src/kisuke/infrastructure/validation/parser.py         49      0   100%
+src/kisuke/infrastructure/validation/report.py         52      6    88%   74-79
+src/kisuke/infrastructure/validation/scanner.py        13      0   100%
+src/kisuke/infrastructure/validation/schema.py         50      2    96%   33, 42
+src/kisuke/infrastructure/validation/validator.py     122      4    97%   66, 102, 105, 150
+src/kisuke/integrations/__init__.py                     0      0   100%
+src/kisuke/plugins/__init__.py                          0      0   100%
+src/kisuke/shared/__init__.py                           0      0   100%
+src/kisuke/shared/config.py                            27      0   100%
+src/kisuke/shared/logging.py                           12      0   100%
+---------------------------------------------------------------------------------
+TOTAL                                                2380    122    95%

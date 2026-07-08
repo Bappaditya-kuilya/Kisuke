@@ -1,6 +1,4 @@
-def main() -> None:
-    print("Kisuke CLI")
-
+from kisuke.cli.main import main
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

@@ -23,10 +23,22 @@ def test_order_entities_deterministic() -> None:
     from kisuke.domain.owner import Owner
 
     owner = Owner.of(EntityId.from_string("22222222-2222-2222-2222-222222222222"))
-    a = Task(id=EntityId.from_string(T2), title="a", owner=owner,
-             status=TaskStatus.TODO, created_at=TS, updated_at=TS)
-    b = Task(id=EntityId.from_string(T1), title="b", owner=owner,
-             status=TaskStatus.IN_PROGRESS, created_at=TS, updated_at=TS)
+    a = Task(
+        id=EntityId.from_string(T2),
+        title="a",
+        owner=owner,
+        status=TaskStatus.TODO,
+        created_at=TS,
+        updated_at=TS,
+    )
+    b = Task(
+        id=EntityId.from_string(T1),
+        title="b",
+        owner=owner,
+        status=TaskStatus.IN_PROGRESS,
+        created_at=TS,
+        updated_at=TS,
+    )
     ordered = order_entities([a, b])
     assert [str(t.id) for t in ordered] == [T1, T2]
 

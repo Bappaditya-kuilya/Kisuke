@@ -61,8 +61,16 @@ def test_entities_are_frozen() -> None:
 
 def test_entity_is_base_for_all() -> None:
     for entity in (
-        make_mission(), make_project(), make_task(), make_knowledge(), make_cookbook(),
-        make_decision(), make_meeting(), make_person(), make_resource(), make_review(),
+        make_mission(),
+        make_project(),
+        make_task(),
+        make_knowledge(),
+        make_cookbook(),
+        make_decision(),
+        make_meeting(),
+        make_person(),
+        make_resource(),
+        make_review(),
         make_attachment(),
     ):
         assert isinstance(entity, Entity)

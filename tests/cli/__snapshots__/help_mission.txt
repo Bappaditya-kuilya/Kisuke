@@ -1,0 +1,11 @@
+usage: kisuke mission [-h] [--json] [--quiet] [--verbose]
+                      {create,list,show,archive} ...
+
+positional arguments:
+  {create,list,show,archive}
+
+options:
+  -h, --help            show this help message and exit
+  --json                machine-readable output
+  --quiet               suppress output
+  --verbose             verbose logging

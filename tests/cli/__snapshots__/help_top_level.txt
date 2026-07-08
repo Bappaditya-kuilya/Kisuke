@@ -1,0 +1,15 @@
+usage: kisuke [-h] [--json] [--quiet] [--verbose] [--version]
+              {init,doctor,status,config,resume,mission,project,knowledge,decision,person,resource,task,cookbook,meeting,review,search,sync,plugin,index,completion,validate}
+              ...
+
+Kisuke: local-first context reconstruction engine.
+
+positional arguments:
+  {init,doctor,status,config,resume,mission,project,knowledge,decision,person,resource,task,cookbook,meeting,review,search,sync,plugin,index,completion,validate}
+
+options:
+  -h, --help            show this help message and exit
+  --json                machine-readable output
+  --quiet               suppress output
+  --verbose             verbose logging
+  --version             show program's version number and exit

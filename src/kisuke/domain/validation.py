@@ -26,9 +26,7 @@ def validate_status(entity_type: EntityType, status: StrEnum) -> None:
     """Raise LifecycleError if ``status`` is not valid for ``entity_type``."""
     allowed = STATUS_ENUMS.get(entity_type)
     if allowed is None or not isinstance(status, allowed):
-        raise LifecycleError(
-            [f"{entity_type} has no status {status!r}"]
-        )
+        raise LifecycleError([f"{entity_type} has no status {status!r}"])
 
 
 def validate_entity(entity: Entity) -> None:

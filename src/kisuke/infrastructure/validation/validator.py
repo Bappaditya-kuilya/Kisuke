@@ -84,7 +84,10 @@ class RepositoryValidator:
         if result.entity is None:
             return [
                 ValidationIssue(
-                    IssueCode.PARSE_ERROR, IssueSeverity.ERROR, et, eid,
+                    IssueCode.PARSE_ERROR,
+                    IssueSeverity.ERROR,
+                    et,
+                    eid,
                     result.error or "entity construction failed",
                 )
             ]
@@ -105,7 +108,10 @@ class RepositoryValidator:
         except ValueError:
             return [
                 ValidationIssue(
-                    IssueCode.LIFECYCLE, IssueSeverity.ERROR, et, eid,
+                    IssueCode.LIFECYCLE,
+                    IssueSeverity.ERROR,
+                    et,
+                    eid,
                     f"{et} has no status {status!r}",
                 )
             ]
@@ -119,8 +125,10 @@ class RepositoryValidator:
             if entity.id in by_id:
                 issues.append(
                     ValidationIssue(
-                        IssueCode.DUPLICATE_ID, IssueSeverity.ERROR,
-                        entity.entity_type, str(entity.id),
+                        IssueCode.DUPLICATE_ID,
+                        IssueSeverity.ERROR,
+                        entity.entity_type,
+                        str(entity.id),
                         f"Duplicate entity ID: {entity.id}",
                     )
                 )
@@ -133,9 +141,7 @@ class RepositoryValidator:
         return issues
 
     @staticmethod
-    def _check_ownership(
-        entity: Entity, by_id: dict[EntityId, Entity]
-    ) -> list[ValidationIssue]:
+    def _check_ownership(entity: Entity, by_id: dict[EntityId, Entity]) -> list[ValidationIssue]:
         issues: list[ValidationIssue] = []
         rule = OWNERSHIP_RULES[entity.entity_type]
 
@@ -143,8 +149,10 @@ class RepositoryValidator:
             if entity.owner.sentinel != rule.sentinel:
                 issues.append(
                     ValidationIssue(
-                        IssueCode.OWNERSHIP, IssueSeverity.ERROR,
-                        entity.entity_type, str(entity.id),
+                        IssueCode.OWNERSHIP,
+                        IssueSeverity.ERROR,
+                        entity.entity_type,
+                        str(entity.id),
                         f"{entity.entity_type} {entity.id} must be owned by sentinel "
                         f"{rule.sentinel!r}, got {entity.owner!r}",
                     )
@@ -153,8 +161,10 @@ class RepositoryValidator:
             if entity.owner.entity_id is None:
                 issues.append(
                     ValidationIssue(
-                        IssueCode.OWNERSHIP, IssueSeverity.ERROR,
-                        entity.entity_type, str(entity.id),
+                        IssueCode.OWNERSHIP,
+                        IssueSeverity.ERROR,
+                        entity.entity_type,
+                        str(entity.id),
                         f"{entity.entity_type} {entity.id} must be owned by an entity, "
                         f"got sentinel {entity.owner.sentinel!r}",
                     )
@@ -166,16 +176,20 @@ class RepositoryValidator:
             if owner_entity is None:
                 issues.append(
                     ValidationIssue(
-                        IssueCode.OWNERSHIP, IssueSeverity.ERROR,
-                        entity.entity_type, str(entity.id),
+                        IssueCode.OWNERSHIP,
+                        IssueSeverity.ERROR,
+                        entity.entity_type,
+                        str(entity.id),
                         f"{entity.entity_type} {entity.id} references missing owner {owner_id}",
                     )
                 )
             elif rule.owner_type is not None and owner_entity.entity_type != rule.owner_type:
                 issues.append(
                     ValidationIssue(
-                        IssueCode.OWNERSHIP, IssueSeverity.ERROR,
-                        entity.entity_type, str(entity.id),
+                        IssueCode.OWNERSHIP,
+                        IssueSeverity.ERROR,
+                        entity.entity_type,
+                        str(entity.id),
                         f"{entity.entity_type} {entity.id} owned by "
                         f"{owner_entity.entity_type} but expected {rule.owner_type}",
                     )
@@ -195,8 +209,10 @@ class RepositoryValidator:
                 if ref in seen:
                     issues.append(
                         ValidationIssue(
-                            IssueCode.INVALID_REFERENCE, IssueSeverity.ERROR,
-                            entity.entity_type, str(entity.id),
+                            IssueCode.INVALID_REFERENCE,
+                            IssueSeverity.ERROR,
+                            entity.entity_type,
+                            str(entity.id),
                             f"Duplicate reference {ref} in {entity.entity_type} {entity.id}",
                         )
                     )
@@ -206,16 +222,20 @@ class RepositoryValidator:
                 if target is None:
                     issues.append(
                         ValidationIssue(
-                            IssueCode.ORPHAN_REFERENCE, IssueSeverity.ERROR,
-                            entity.entity_type, str(entity.id),
+                            IssueCode.ORPHAN_REFERENCE,
+                            IssueSeverity.ERROR,
+                            entity.entity_type,
+                            str(entity.id),
                             f"{entity.entity_type} {entity.id} references missing entity {ref}",
                         )
                     )
                 elif target.entity_type not in allowed:
                     issues.append(
                         ValidationIssue(
-                            IssueCode.INVALID_REFERENCE, IssueSeverity.ERROR,
-                            entity.entity_type, str(entity.id),
+                            IssueCode.INVALID_REFERENCE,
+                            IssueSeverity.ERROR,
+                            entity.entity_type,
+                            str(entity.id),
                             f"{entity.entity_type} {entity.id} references disallowed type "
                             f"{target.entity_type} via {ref}",
                         )
@@ -229,8 +249,10 @@ class RepositoryValidator:
             if by_id.get(ref) is None:
                 issues.append(
                     ValidationIssue(
-                        IssueCode.ORPHAN_REFERENCE, IssueSeverity.ERROR,
-                        entity.entity_type, str(entity.id),
+                        IssueCode.ORPHAN_REFERENCE,
+                        IssueSeverity.ERROR,
+                        entity.entity_type,
+                        str(entity.id),
                         f"{entity.entity_type} {entity.id} references missing entity {ref}",
                     )
                 )
@@ -240,16 +262,20 @@ class RepositoryValidator:
             if target is None:
                 issues.append(
                     ValidationIssue(
-                        IssueCode.ORPHAN_REFERENCE, IssueSeverity.ERROR,
-                        entity.entity_type, str(entity.id),
+                        IssueCode.ORPHAN_REFERENCE,
+                        IssueSeverity.ERROR,
+                        entity.entity_type,
+                        str(entity.id),
                         f"{entity.entity_type} {entity.id} references missing attachment {ref}",
                     )
                 )
             elif target.entity_type != EntityType.ATTACHMENT:
                 issues.append(
                     ValidationIssue(
-                        IssueCode.INVALID_REFERENCE, IssueSeverity.ERROR,
-                        entity.entity_type, str(entity.id),
+                        IssueCode.INVALID_REFERENCE,
+                        IssueSeverity.ERROR,
+                        entity.entity_type,
+                        str(entity.id),
                         f"{entity.entity_type} {entity.id} attachment {ref} is not an Attachment",
                     )
                 )
@@ -262,8 +288,10 @@ class RepositoryValidator:
                 if target is None:
                     issues.append(
                         ValidationIssue(
-                            IssueCode.ORPHAN_REFERENCE, IssueSeverity.ERROR,
-                            entity.entity_type, str(entity.id),
+                            IssueCode.ORPHAN_REFERENCE,
+                            IssueSeverity.ERROR,
+                            entity.entity_type,
+                            str(entity.id),
                             f"{entity.entity_type} {entity.id} next action references "
                             f"missing entity {next_action}",
                         )
@@ -271,8 +299,10 @@ class RepositoryValidator:
                 elif target.entity_type != next_type:
                     issues.append(
                         ValidationIssue(
-                            IssueCode.INVALID_REFERENCE, IssueSeverity.ERROR,
-                            entity.entity_type, str(entity.id),
+                            IssueCode.INVALID_REFERENCE,
+                            IssueSeverity.ERROR,
+                            entity.entity_type,
+                            str(entity.id),
                             f"{entity.entity_type} {entity.id} next action {next_action} "
                             f"is not a {next_type}",
                         )

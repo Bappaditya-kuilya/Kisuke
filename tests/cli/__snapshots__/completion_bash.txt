@@ -1,0 +1,12 @@
+# bash completion for kisuke
+_kisuke() {
+    local cur prev
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=( $(compgen -W "init doctor status config resume mission project task knowledge cookbook decision meeting person resource review search sync plugin index completion validate" -- "$cur") )
+        return 0
+    fi
+}
+complete -F _kisuke kisuke
+

@@ -1,0 +1,5 @@
+# zsh completion for kisuke
+#compdef kisuke
+_kisuke() { _arguments '1:command:((init doctor status config resume mission project task knowledge cookbook decision meeting person resource review search sync plugin index completion validate))' '*:: :_files' }
+_kisuke
+

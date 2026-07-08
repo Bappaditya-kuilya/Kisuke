@@ -98,8 +98,11 @@ def test_focus_mission_override(working_repo: Path) -> None:
     repo = FileRepository(working_repo)
     other = MType(
         id=EntityId.from_string("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
-        title="Other Mission", owner=Owner.kisuke_core(),
-        status=MissionStatus.PLANNING, created_at=TS, updated_at=TS,
+        title="Other Mission",
+        owner=Owner.kisuke_core(),
+        status=MissionStatus.PLANNING,
+        created_at=TS,
+        updated_at=TS,
     )
     repo.save(other)
     focus_id = "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"
@@ -116,12 +119,20 @@ def test_no_modification(working_repo: Path) -> None:
 
 def test_validation_reports_next_action_inconsistency(working_repo: Path) -> None:
     task_a = Task(
-        id=EntityId.from_string(T1), title="A", owner=Owner.of(EntityId.from_string(P)),
-        status=TaskStatus.TODO, created_at=TS, updated_at=TS,
+        id=EntityId.from_string(T1),
+        title="A",
+        owner=Owner.of(EntityId.from_string(P)),
+        status=TaskStatus.TODO,
+        created_at=TS,
+        updated_at=TS,
     )
     task_b = Task(
-        id=EntityId.from_string(T2), title="B", owner=Owner.of(EntityId.from_string(P)),
-        status=TaskStatus.TODO, created_at=TS, updated_at=TS,
+        id=EntityId.from_string(T2),
+        title="B",
+        owner=Owner.of(EntityId.from_string(P)),
+        status=TaskStatus.TODO,
+        created_at=TS,
+        updated_at=TS,
     )
     result = ResumeResult(related_tasks=[task_b], next_action=task_a)
     problems = ResumeService(working_repo).validate(result)

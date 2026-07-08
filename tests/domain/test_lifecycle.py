@@ -18,9 +18,17 @@ from tests.domain.factories import make_mission, make_project, mid
 def test_entity_type_values() -> None:
     assert EntityType.MISSION == "mission"
     assert set(EntityType) == {
-        EntityType.MISSION, EntityType.PROJECT, EntityType.TASK, EntityType.KNOWLEDGE,
-        EntityType.COOKBOOK, EntityType.DECISION, EntityType.MEETING, EntityType.PERSON,
-        EntityType.RESOURCE, EntityType.REVIEW, EntityType.ATTACHMENT,
+        EntityType.MISSION,
+        EntityType.PROJECT,
+        EntityType.TASK,
+        EntityType.KNOWLEDGE,
+        EntityType.COOKBOOK,
+        EntityType.DECISION,
+        EntityType.MEETING,
+        EntityType.PERSON,
+        EntityType.RESOURCE,
+        EntityType.REVIEW,
+        EntityType.ATTACHMENT,
     }
 
 
@@ -62,8 +70,11 @@ def test_validate_entity_rejects_invalid_status() -> None:
     from kisuke.domain.lifecycle import TaskStatus
 
     bad = Mission(
-        id=mid(1), title="M", owner=Owner.kisuke_core(),
-        status=TaskStatus.TODO, created_at=make_mission().created_at,
+        id=mid(1),
+        title="M",
+        owner=Owner.kisuke_core(),
+        status=TaskStatus.TODO,
+        created_at=make_mission().created_at,
         updated_at=make_mission().updated_at,
     )
     with pytest.raises(LifecycleError):
@@ -75,8 +86,11 @@ def test_validate_entities_rejects_invalid_status() -> None:
     from kisuke.domain.lifecycle import TaskStatus
 
     bad = Mission(
-        id=mid(1), title="M", owner=Owner.kisuke_core(),
-        status=TaskStatus.TODO, created_at=make_mission().created_at,
+        id=mid(1),
+        title="M",
+        owner=Owner.kisuke_core(),
+        status=TaskStatus.TODO,
+        created_at=make_mission().created_at,
         updated_at=make_mission().updated_at,
     )
     with pytest.raises(LifecycleError):

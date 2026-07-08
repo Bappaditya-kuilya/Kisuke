@@ -54,7 +54,10 @@ def schema_issues(fm: dict[str, Any], entity_type: EntityType | None) -> list[Va
         if field_name not in fm or fm[field_name] is None:
             issues.append(
                 ValidationIssue(
-                    IssueCode.SCHEMA, IssueSeverity.ERROR, entity_type, entity_id,
+                    IssueCode.SCHEMA,
+                    IssueSeverity.ERROR,
+                    entity_type,
+                    entity_id,
                     f"Missing required field '{field_name}'",
                 )
             )
@@ -63,7 +66,10 @@ def schema_issues(fm: dict[str, Any], entity_type: EntityType | None) -> list[Va
     if raw_id is not None and not (isinstance(raw_id, str) and UUID_RE.match(raw_id)):
         issues.append(
             ValidationIssue(
-                IssueCode.SCHEMA, IssueSeverity.ERROR, entity_type, entity_id,
+                IssueCode.SCHEMA,
+                IssueSeverity.ERROR,
+                entity_type,
+                entity_id,
                 f"Field 'id' is not a valid UUID: {raw_id!r}",
             )
         )
@@ -73,7 +79,10 @@ def schema_issues(fm: dict[str, Any], entity_type: EntityType | None) -> list[Va
         if value is not None and not str(value).strip():
             issues.append(
                 ValidationIssue(
-                    IssueCode.SCHEMA, IssueSeverity.ERROR, entity_type, entity_id,
+                    IssueCode.SCHEMA,
+                    IssueSeverity.ERROR,
+                    entity_type,
+                    entity_id,
                     f"Field '{field_name}' must not be empty",
                 )
             )
@@ -82,7 +91,10 @@ def schema_issues(fm: dict[str, Any], entity_type: EntityType | None) -> list[Va
     if raw_type is not None and safe_entity_type(raw_type) is None:
         issues.append(
             ValidationIssue(
-                IssueCode.SCHEMA, IssueSeverity.ERROR, entity_type, entity_id,
+                IssueCode.SCHEMA,
+                IssueSeverity.ERROR,
+                entity_type,
+                entity_id,
                 f"Field 'type' is not a valid entity type: {raw_type!r}",
             )
         )
@@ -95,7 +107,10 @@ def schema_issues(fm: dict[str, Any], entity_type: EntityType | None) -> list[Va
             except ValueError:
                 issues.append(
                     ValidationIssue(
-                        IssueCode.SCHEMA, IssueSeverity.ERROR, entity_type, entity_id,
+                        IssueCode.SCHEMA,
+                        IssueSeverity.ERROR,
+                        entity_type,
+                        entity_id,
                         f"Field '{field_name}' is not a valid datetime: {value!r}",
                     )
                 )
@@ -105,7 +120,10 @@ def schema_issues(fm: dict[str, Any], entity_type: EntityType | None) -> list[Va
         if value is not None and not isinstance(value, list):
             issues.append(
                 ValidationIssue(
-                    IssueCode.SCHEMA, IssueSeverity.ERROR, entity_type, entity_id,
+                    IssueCode.SCHEMA,
+                    IssueSeverity.ERROR,
+                    entity_type,
+                    entity_id,
                     f"Field '{field_name}' must be a list",
                 )
             )

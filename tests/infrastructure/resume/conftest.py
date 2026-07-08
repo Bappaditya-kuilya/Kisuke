@@ -55,75 +55,131 @@ REV = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
 def working_repo(tmp_path: Path) -> Path:
     repo = FileRepository(tmp_path)
     mission = Mission(
-        id=EntityId.from_string(M), title="Become an AI Engineer",
-        owner=Owner.kisuke_core(), status=MissionStatus.ACTIVE,
+        id=EntityId.from_string(M),
+        title="Become an AI Engineer",
+        owner=Owner.kisuke_core(),
+        status=MissionStatus.ACTIVE,
         projects=[EntityId.from_string(P), EntityId.from_string(P2)],
-        reviews=[EntityId.from_string(REV)], created_at=TS, updated_at=TS,
+        reviews=[EntityId.from_string(REV)],
+        created_at=TS,
+        updated_at=TS,
     )
     project = Project(
-        id=EntityId.from_string(P), title="Build Kisuke Platform",
-        owner=Owner.of(EntityId.from_string(M)), status=ProjectStatus.ACTIVE,
+        id=EntityId.from_string(P),
+        title="Build Kisuke Platform",
+        owner=Owner.of(EntityId.from_string(M)),
+        status=ProjectStatus.ACTIVE,
         tasks=[EntityId.from_string(T1), EntityId.from_string(T2)],
-        knowledge=[EntityId.from_string(K)], decisions=[EntityId.from_string(D)],
-        meetings=[EntityId.from_string(MTG)], resources=[EntityId.from_string(R)],
-        people=[EntityId.from_string(PERS)], next_action=EntityId.from_string(T1),
-        created_at=TS, updated_at=TS,
+        knowledge=[EntityId.from_string(K)],
+        decisions=[EntityId.from_string(D)],
+        meetings=[EntityId.from_string(MTG)],
+        resources=[EntityId.from_string(R)],
+        people=[EntityId.from_string(PERS)],
+        next_action=EntityId.from_string(T1),
+        created_at=TS,
+        updated_at=TS,
     )
     project2 = Project(
-        id=EntityId.from_string(P2), title="Side Project",
-        owner=Owner.of(EntityId.from_string(M)), status=ProjectStatus.ACTIVE,
-        created_at=TS, updated_at=TS,
+        id=EntityId.from_string(P2),
+        title="Side Project",
+        owner=Owner.of(EntityId.from_string(M)),
+        status=ProjectStatus.ACTIVE,
+        created_at=TS,
+        updated_at=TS,
     )
     task1 = Task(
-        id=EntityId.from_string(T1), title="Implement parser",
-        owner=Owner.of(EntityId.from_string(P)), status=TaskStatus.IN_PROGRESS,
-        references=[EntityId.from_string(R)], created_at=TS, updated_at=TS,
+        id=EntityId.from_string(T1),
+        title="Implement parser",
+        owner=Owner.of(EntityId.from_string(P)),
+        status=TaskStatus.IN_PROGRESS,
+        references=[EntityId.from_string(R)],
+        created_at=TS,
+        updated_at=TS,
     )
     task2 = Task(
-        id=EntityId.from_string(T2), title="Write docs",
-        owner=Owner.of(EntityId.from_string(P)), status=TaskStatus.TODO,
-        created_at=TS, updated_at=TS,
+        id=EntityId.from_string(T2),
+        title="Write docs",
+        owner=Owner.of(EntityId.from_string(P)),
+        status=TaskStatus.TODO,
+        created_at=TS,
+        updated_at=TS,
     )
     knowledge = Knowledge(
-        id=EntityId.from_string(K), title="SQLite notes",
-        owner=Owner.of(EntityId.from_string(P)), status=KnowledgeStatus.ACTIVE,
-        resources=[EntityId.from_string(R)], created_at=TS, updated_at=TS,
+        id=EntityId.from_string(K),
+        title="SQLite notes",
+        owner=Owner.of(EntityId.from_string(P)),
+        status=KnowledgeStatus.ACTIVE,
+        resources=[EntityId.from_string(R)],
+        created_at=TS,
+        updated_at=TS,
     )
     decision = Decision(
-        id=EntityId.from_string(D), title="Use Markdown",
-        owner=Owner.of(EntityId.from_string(P)), status=DecisionStatus.ACCEPTED,
-        created_at=TS, updated_at=TS,
+        id=EntityId.from_string(D),
+        title="Use Markdown",
+        owner=Owner.of(EntityId.from_string(P)),
+        status=DecisionStatus.ACCEPTED,
+        created_at=TS,
+        updated_at=TS,
     )
     meeting = Meeting(
-        id=EntityId.from_string(MTG), title="Weekly sync",
-        owner=Owner.independent(), status=MeetingStatus.COMPLETED,
-        projects=[EntityId.from_string(P)], people=[EntityId.from_string(PERS)],
-        created_at=TS, updated_at=TS,
+        id=EntityId.from_string(MTG),
+        title="Weekly sync",
+        owner=Owner.independent(),
+        status=MeetingStatus.COMPLETED,
+        projects=[EntityId.from_string(P)],
+        people=[EntityId.from_string(PERS)],
+        created_at=TS,
+        updated_at=TS,
     )
     meeting2 = Meeting(
-        id=EntityId.from_string(MTG2), title="Ad-hoc",
-        owner=Owner.independent(), status=MeetingStatus.COMPLETED,
-        projects=[EntityId.from_string(P)], people=[],
-        created_at=TS, updated_at=TS,
+        id=EntityId.from_string(MTG2),
+        title="Ad-hoc",
+        owner=Owner.independent(),
+        status=MeetingStatus.COMPLETED,
+        projects=[EntityId.from_string(P)],
+        people=[],
+        created_at=TS,
+        updated_at=TS,
     )
     resource = Resource(
-        id=EntityId.from_string(R), title="SQLite docs",
-        owner=Owner.independent(), status=ResourceStatus.ACTIVE,
-        created_at=TS, updated_at=TS,
+        id=EntityId.from_string(R),
+        title="SQLite docs",
+        owner=Owner.independent(),
+        status=ResourceStatus.ACTIVE,
+        created_at=TS,
+        updated_at=TS,
     )
     person = Person(
-        id=EntityId.from_string(PERS), title="Ada Mentor",
-        owner=Owner.independent(), status=PersonStatus.ACTIVE,
-        created_at=TS, updated_at=TS,
+        id=EntityId.from_string(PERS),
+        title="Ada Mentor",
+        owner=Owner.independent(),
+        status=PersonStatus.ACTIVE,
+        created_at=TS,
+        updated_at=TS,
     )
     review = Review(
-        id=EntityId.from_string(REV), title="Weekly review",
-        owner=Owner.of(EntityId.from_string(M)), status=ReviewStatus.COMPLETED,
-        review_type="Weekly", date="2024-01-07", created_at=TS, updated_at=TS,
+        id=EntityId.from_string(REV),
+        title="Weekly review",
+        owner=Owner.of(EntityId.from_string(M)),
+        status=ReviewStatus.COMPLETED,
+        review_type="Weekly",
+        date="2024-01-07",
+        created_at=TS,
+        updated_at=TS,
     )
     for entity in (
-        mission, project, project2, task1, task2, knowledge, decision,
-        meeting, meeting2, resource, person, review,
+        mission,
+        project,
+        project2,
+        task1,
+        task2,
+        knowledge,
+        decision,
+        meeting,
+        meeting2,
+        resource,
+        person,
+        review,
     ):
         repo.save(entity)
     return tmp_path
@@ -132,27 +188,36 @@ def working_repo(tmp_path: Path) -> Path:
 def make_bench_repo(tmp_path: Path, n: int = 150) -> Path:
     repo = FileRepository(tmp_path)
     mission = Mission(
-        id=EntityId.from_string(str(uuid.UUID(int=1))), title="Bench Mission",
-        owner=Owner.kisuke_core(), status=MissionStatus.ACTIVE,
-        created_at=TS, updated_at=TS,
+        id=EntityId.from_string(str(uuid.UUID(int=1))),
+        title="Bench Mission",
+        owner=Owner.kisuke_core(),
+        status=MissionStatus.ACTIVE,
+        created_at=TS,
+        updated_at=TS,
     )
-    task_ids = [
-        EntityId.from_string(str(uuid.UUID(int=1000 + i))) for i in range(n)
-    ]
+    task_ids = [EntityId.from_string(str(uuid.UUID(int=1000 + i))) for i in range(n)]
     project = Project(
-        id=EntityId.from_string(str(uuid.UUID(int=2))), title="Bench Project",
-        owner=Owner.of(mission.id), status=ProjectStatus.ACTIVE,
-        tasks=task_ids, created_at=TS, updated_at=TS,
+        id=EntityId.from_string(str(uuid.UUID(int=2))),
+        title="Bench Project",
+        owner=Owner.of(mission.id),
+        status=ProjectStatus.ACTIVE,
+        tasks=task_ids,
+        created_at=TS,
+        updated_at=TS,
     )
     repo.save(mission)
     repo.save(project)
     for task_id in task_ids:
-        repo.save(Task(
-            id=task_id,
-            title=f"Bench task number {task_id}",
-            owner=Owner.of(project.id), status=TaskStatus.TODO,
-            created_at=TS, updated_at=TS,
-        ))
+        repo.save(
+            Task(
+                id=task_id,
+                title=f"Bench task number {task_id}",
+                owner=Owner.of(project.id),
+                status=TaskStatus.TODO,
+                created_at=TS,
+                updated_at=TS,
+            )
+        )
     return tmp_path
 
 

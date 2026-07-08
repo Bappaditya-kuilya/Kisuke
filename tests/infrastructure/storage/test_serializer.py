@@ -25,8 +25,14 @@ TAIL = ["tags", "references", "attachments", "created_at", "updated_at"]
 SPECIFIC: dict[EntityType, list[str]] = {
     EntityType.MISSION: ["priority", "projects", "reviews"],
     EntityType.PROJECT: [
-        "priority", "next_action", "tasks", "knowledge",
-        "decisions", "meetings", "resources", "people",
+        "priority",
+        "next_action",
+        "tasks",
+        "knowledge",
+        "decisions",
+        "meetings",
+        "resources",
+        "people",
     ],
     EntityType.TASK: ["priority", "due_date", "estimated_time"],
     EntityType.KNOWLEDGE: ["resources"],
@@ -36,7 +42,11 @@ SPECIFIC: dict[EntityType, list[str]] = {
     EntityType.PERSON: ["role", "organization", "email", "links"],
     EntityType.RESOURCE: ["resource_type", "url"],
     EntityType.REVIEW: [
-        "review_type", "date", "completed_projects", "blocked_projects", "next_actions",
+        "review_type",
+        "date",
+        "completed_projects",
+        "blocked_projects",
+        "next_actions",
     ],
     EntityType.ATTACHMENT: ["filename", "mime_type", "size", "checksum"],
 }

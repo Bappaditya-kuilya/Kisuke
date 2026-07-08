@@ -19,18 +19,35 @@ EMPTY_LISTS = {"tags": [], "references": [], "attachments": []}
 
 def _mission(id: str, status: str = "Active") -> dict:
     return {
-        "id": id, "type": "mission", "title": "M", "owner": "kisuke-core",
-        "status": status, **EMPTY_LISTS, "created_at": TS, "updated_at": TS,
+        "id": id,
+        "type": "mission",
+        "title": "M",
+        "owner": "kisuke-core",
+        "status": status,
+        **EMPTY_LISTS,
+        "created_at": TS,
+        "updated_at": TS,
     }
 
 
 def _project(id: str, owner: str, **extra: object) -> dict:
     base = {
-        "id": id, "type": "project", "title": "P", "owner": owner,
-        "status": "Active", "priority": None, "next_action": None,
-        "tasks": [], "knowledge": [], "decisions": [], "meetings": [],
-        "resources": [], "people": [], **EMPTY_LISTS,
-        "created_at": TS, "updated_at": TS,
+        "id": id,
+        "type": "project",
+        "title": "P",
+        "owner": owner,
+        "status": "Active",
+        "priority": None,
+        "next_action": None,
+        "tasks": [],
+        "knowledge": [],
+        "decisions": [],
+        "meetings": [],
+        "resources": [],
+        "people": [],
+        **EMPTY_LISTS,
+        "created_at": TS,
+        "updated_at": TS,
     }
     base.update(extra)
     return base
@@ -38,9 +55,17 @@ def _project(id: str, owner: str, **extra: object) -> dict:
 
 def _task(id: str, owner: str, **extra: object) -> dict:
     base = {
-        "id": id, "type": "task", "title": "T", "owner": owner,
-        "status": "Todo", "priority": None, "due_date": None, "estimated_time": None,
-        **EMPTY_LISTS, "created_at": TS, "updated_at": TS,
+        "id": id,
+        "type": "task",
+        "title": "T",
+        "owner": owner,
+        "status": "Todo",
+        "priority": None,
+        "due_date": None,
+        "estimated_time": None,
+        **EMPTY_LISTS,
+        "created_at": TS,
+        "updated_at": TS,
     }
     base.update(extra)
     return base
