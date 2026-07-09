@@ -1,7 +1,7 @@
 # System Context
 
 > Scope: how Kisuke sits in its operating environment.
-> Source: docs/engineering/12-engineering-architecture.md, PROJECT_MANIFEST.md.
+> Source: docs/engineering/12-engineering-architecture.md.
 
 ## Actors
 
@@ -57,4 +57,4 @@ Kisuke integrates rather than rebuilds. The Domain never depends on any of these
 - Git owns history.
 - AI owns nothing; it is optional.
 - Core functions without any integration.
-- Architecture is frozen (PROJECT_MANIFEST.md, Non-Negotiable Rule 1).
+- Architecture is frozen (Non-Negotiable Rule 1).

@@ -62,45 +62,23 @@ It is built for developers, builders, researchers, and anyone who frequently swi
 
 ```
 .
-├── MASTER_SPECIFICATION.md
-├── PROJECT_MANIFEST.md
-├── IMPLEMENTATION_CONTRACT.md
-├── CLAUDE.md
-├── DOCUMENT_INDEX.md
-│
 ├── docs/
 ├── architecture/
 ├── adrs/
 ├── rfcs/
+├── scripts/
 ├── templates/
+├── examples/
 ├── src/
 ├── tests/
-└── assets/
+└── website/
 ```
 
 ---
 
-# Documentation Order
+# Documentation
 
-```
-PROJECT_MANIFEST
-
-↓
-
-IMPLEMENTATION_CONTRACT
-
-↓
-
-CLAUDE
-
-↓
-
-MASTER_SPECIFICATION
-
-↓
-
-Supporting Documents
-```
+The canonical specification lives in `docs/`. See `docs/MASTER_SPECIFICATION.md` for the navigation index.
 
 ---
 
@@ -152,8 +130,8 @@ The canonical milestone order is defined once, in `docs/execution/13-roadmap.md`
 # Current Status
 
 - Architecture: Frozen
-- Documentation: In Progress
-- Implementation: Not Started
+- Documentation: Complete
+- Implementation: v0.1.0 (309 tests passing)
 
 ---
 

@@ -31,7 +31,7 @@ Priority:
 5. Execution documents (`docs/execution/`)
 6. Source Code
 
-`PROJECT_MANIFEST.md`, `IMPLEMENTATION_CONTRACT.md`, `DOCUMENT_INDEX.md`, and `MASTER_SPECIFICATION.md` are navigation and process documents. They summarize and route to the documents above; they are not a separate content tier and never override them. See `MASTER_SPECIFICATION.md` for its role as a navigation index into `docs/`, which is the canonical specification (docs/foundation/02-product-definition.md and DOCUMENT_INDEX.md explain this in full).
+`MASTER_SPECIFICATION.md` (now in `docs/`) is a navigation index. It summarizes and routes to the documents above; it is not a separate content tier and never overrides them.
 
 ---
 
