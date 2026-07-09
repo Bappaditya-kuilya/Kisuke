@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { JsonLd } from "@/components/ui/json-ld";
 import "./globals.css";
 
 const inter = Inter({
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     title: "Kisuke — Local-First Context Reconstruction",
     description:
       "Reconstruct context from your code, commits, documents, and conversations. Everything stays local. AI is optional.",
-    url: "https://kisuke.dev",
+    url: "https://kisuke.vercel.app",
     siteName: "Kisuke",
     type: "website",
     locale: "en_US",
@@ -65,7 +66,10 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  metadataBase: new URL("https://kisuke.dev"),
+  alternates: {
+    canonical: "https://kisuke.vercel.app",
+  },
+  metadataBase: new URL("https://kisuke.vercel.app"),
 };
 
 export const viewport: Viewport = {
@@ -85,6 +89,31 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-canvas text-text-primary">
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Kisuke",
+            url: "https://kisuke.vercel.app",
+            logo: "https://kisuke.vercel.app/og.svg",
+            sameAs: ["https://github.com/kisuke/kisuke"],
+          }}
+        />
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Kisuke",
+            url: "https://kisuke.vercel.app",
+            description:
+              "Local-first context reconstruction. Reconstruct context from your code, commits, documents, and conversations.",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: "https://kisuke.vercel.app/docs?q={search_term_string}",
+              "query-input": "required name=search_term_string",
+            },
+          }}
+        />
         {children}
       </body>
     </html>

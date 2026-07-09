@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/ui/reveal";
 import { Breadcrumbs } from "@/components/docs/breadcrumbs";
 import { GithubIcon } from "@/components/ui/github-icon";
+import { JsonLd } from "@/components/ui/json-ld";
 
 export const metadata: Metadata = {
   title: "About",
@@ -16,8 +17,27 @@ export const metadata: Metadata = {
     title: "About — Kisuke",
     description:
       "About Kisuke — local-first context reconstruction. Why it exists, how it works, and what guides it.",
-    url: "https://kisuke.dev/about",
+    url: "https://kisuke.vercel.app/about",
+    siteName: "Kisuke",
     type: "website",
+    images: [
+      {
+        url: "/og.svg",
+        width: 1200,
+        height: 630,
+        alt: "About — Kisuke",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About — Kisuke",
+    description:
+      "About Kisuke — local-first context reconstruction. Why it exists, how it works, and what guides it.",
+    images: ["/og.svg"],
+  },
+  alternates: {
+    canonical: "https://kisuke.vercel.app/about",
   },
 };
 
@@ -107,6 +127,41 @@ const techStack = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://kisuke.vercel.app",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "About",
+              item: "https://kisuke.vercel.app/about",
+            },
+          ],
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "About — Kisuke",
+          description:
+            "About Kisuke — local-first context reconstruction. Why it exists, how it works, and what guides it.",
+          url: "https://kisuke.vercel.app/about",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "Kisuke",
+            url: "https://kisuke.vercel.app",
+          },
+        }}
+      />
       <Navigation />
       <main className="pt-14">
         {/* Hero */}

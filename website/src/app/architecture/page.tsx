@@ -12,6 +12,7 @@ import { LayerCard } from "@/components/architecture/layer-card";
 import { AdrCard } from "@/components/architecture/adr-card";
 import { PerformanceStat } from "@/components/architecture/performance-stat";
 import { GithubIcon } from "@/components/ui/github-icon";
+import { JsonLd } from "@/components/ui/json-ld";
 
 export const metadata: Metadata = {
   title: "Architecture",
@@ -21,8 +22,27 @@ export const metadata: Metadata = {
     title: "Architecture — Kisuke",
     description:
       "Clean Architecture, DDD, and local-first design. See how Kisuke is built — eight layers, zero coupling, Markdown as source of truth.",
-    url: "https://kisuke.dev/architecture",
+    url: "https://kisuke.vercel.app/architecture",
+    siteName: "Kisuke",
     type: "website",
+    images: [
+      {
+        url: "/og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Architecture — Kisuke",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Architecture — Kisuke",
+    description:
+      "Clean Architecture, DDD, and local-first design. See how Kisuke is built — eight layers, zero coupling, Markdown as source of truth.",
+    images: ["/og.svg"],
+  },
+  alternates: {
+    canonical: "https://kisuke.vercel.app/architecture",
   },
 };
 
@@ -156,6 +176,41 @@ const repositoryTree = `kisuke/
 export default function ArchitecturePage() {
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://kisuke.vercel.app",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Architecture",
+              item: "https://kisuke.vercel.app/architecture",
+            },
+          ],
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Architecture — Kisuke",
+          description:
+            "Clean Architecture, DDD, and local-first design. See how Kisuke is built — eight layers, zero coupling, Markdown as source of truth.",
+          url: "https://kisuke.vercel.app/architecture",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "Kisuke",
+            url: "https://kisuke.vercel.app",
+          },
+        }}
+      />
       <Navigation />
       <main className="pt-14">
         {/* Hero */}

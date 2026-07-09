@@ -9,6 +9,7 @@ import { Breadcrumbs } from "@/components/docs/breadcrumbs";
 import { DocCard } from "@/components/docs/doc-card";
 import { QuickStartStep } from "@/components/docs/quick-start-step";
 import { CliCheatSheet } from "@/components/docs/cli-cheat-sheet";
+import { JsonLd } from "@/components/ui/json-ld";
 import {
   BookOpen,
   Download,
@@ -34,8 +35,27 @@ export const metadata: Metadata = {
     title: "Documentation — Kisuke",
     description:
       "Learn how to use Kisuke for local-first context reconstruction. Guides, references, and CLI documentation.",
-    url: "https://kisuke.dev/docs",
+    url: "https://kisuke.vercel.app/docs",
+    siteName: "Kisuke",
     type: "website",
+    images: [
+      {
+        url: "/og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Documentation — Kisuke",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Documentation — Kisuke",
+    description:
+      "Learn how to use Kisuke for local-first context reconstruction. Guides, references, and CLI documentation.",
+    images: ["/og.svg"],
+  },
+  alternates: {
+    canonical: "https://kisuke.vercel.app/docs",
   },
 };
 
@@ -244,6 +264,41 @@ const documentationCards = [
 export default function DocsPage() {
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://kisuke.vercel.app",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Documentation",
+              item: "https://kisuke.vercel.app/docs",
+            },
+          ],
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Documentation — Kisuke",
+          description:
+            "Learn how to use Kisuke for local-first context reconstruction. Guides, references, and CLI documentation.",
+          url: "https://kisuke.vercel.app/docs",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "Kisuke",
+            url: "https://kisuke.vercel.app",
+          },
+        }}
+      />
       <Navigation />
       <main className="pt-14">
         <Section className="pt-12 pb-12">

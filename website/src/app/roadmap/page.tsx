@@ -11,6 +11,7 @@ import { PrincipleCard } from "@/components/roadmap/principle-card";
 import { StatusStat } from "@/components/roadmap/status-stat";
 import { ContributionFlow } from "@/components/roadmap/contribution-flow";
 import { GithubIcon } from "@/components/ui/github-icon";
+import { JsonLd } from "@/components/ui/json-ld";
 
 export const metadata: Metadata = {
   title: "Roadmap",
@@ -20,8 +21,27 @@ export const metadata: Metadata = {
     title: "Roadmap — Kisuke",
     description:
       "Kisuke development roadmap. From foundation to v1.0 — local-first context reconstruction for every developer.",
-    url: "https://kisuke.dev/roadmap",
+    url: "https://kisuke.vercel.app/roadmap",
+    siteName: "Kisuke",
     type: "website",
+    images: [
+      {
+        url: "/og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Roadmap — Kisuke",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Roadmap — Kisuke",
+    description:
+      "Kisuke development roadmap. From foundation to v1.0 — local-first context reconstruction for every developer.",
+    images: ["/og.svg"],
+  },
+  alternates: {
+    canonical: "https://kisuke.vercel.app/roadmap",
   },
 };
 
@@ -189,6 +209,41 @@ const principles = [
 export default function RoadmapPage() {
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://kisuke.vercel.app",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Roadmap",
+              item: "https://kisuke.vercel.app/roadmap",
+            },
+          ],
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Roadmap — Kisuke",
+          description:
+            "Kisuke development roadmap. From foundation to v1.0 — local-first context reconstruction for every developer.",
+          url: "https://kisuke.vercel.app/roadmap",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "Kisuke",
+            url: "https://kisuke.vercel.app",
+          },
+        }}
+      />
       <Navigation />
       <main className="pt-14">
         {/* Hero */}

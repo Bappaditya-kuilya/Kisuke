@@ -12,6 +12,7 @@ import { FeatureCheck } from "@/components/download/feature-check";
 import { FaqItem } from "@/components/download/faq-item";
 import { VerificationStat } from "@/components/download/verification-stat";
 import { GithubIcon } from "@/components/ui/github-icon";
+import { JsonLd } from "@/components/ui/json-ld";
 
 export const metadata: Metadata = {
   title: "Download",
@@ -21,8 +22,27 @@ export const metadata: Metadata = {
     title: "Download — Kisuke",
     description:
       "Install Kisuke — local-first context reconstruction engine. Zero runtime dependencies. MIT licensed.",
-    url: "https://kisuke.dev/download",
+    url: "https://kisuke.vercel.app/download",
+    siteName: "Kisuke",
     type: "website",
+    images: [
+      {
+        url: "/og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Download — Kisuke",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Download — Kisuke",
+    description:
+      "Install Kisuke — local-first context reconstruction engine. Zero runtime dependencies. MIT licensed.",
+    images: ["/og.svg"],
+  },
+  alternates: {
+    canonical: "https://kisuke.vercel.app/download",
   },
 };
 
@@ -125,6 +145,41 @@ const faqItems = [
 export default function DownloadPage() {
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://kisuke.vercel.app",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Download",
+              item: "https://kisuke.vercel.app/download",
+            },
+          ],
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Download — Kisuke",
+          description:
+            "Install Kisuke — local-first context reconstruction engine. Zero runtime dependencies. MIT licensed.",
+          url: "https://kisuke.vercel.app/download",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "Kisuke",
+            url: "https://kisuke.vercel.app",
+          },
+        }}
+      />
       <Navigation />
       <main className="pt-14">
         {/* Hero */}

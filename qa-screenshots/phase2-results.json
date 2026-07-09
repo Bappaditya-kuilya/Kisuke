@@ -1,0 +1,41 @@
+{
+  "navigation": [
+    {
+      "test": "Nav exists",
+      "pass": true
+    },
+    {
+      "test": "Navigate to /docs",
+      "pass": true
+    },
+    {
+      "test": "Return to homepage",
+      "pass": false
+    }
+  ],
+  "footer": [
+    {
+      "test": "Footer exists",
+      "pass": true
+    },
+    {
+      "test": "Footer links count",
+      "pass": true,
+      "count": 16
+    }
+  ],
+  "interactive": [
+    {
+      "test": "Buttons exist",
+      "pass": true
+    },
+    {
+      "test": "Expandable elements exist",
+      "pass": true
+    },
+    {
+      "test": "Tab elements exist",
+      "pass": false
+    }
+  ]
+}

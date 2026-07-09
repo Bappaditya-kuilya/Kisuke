@@ -1,0 +1,90 @@
+{
+  "robots": "User-agent: *\nAllow: /\n\nSitemap: https://kisuke.dev/sitemap.xml\n",
+  "sitemap": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url>\n    <loc>https://kisuke.dev</loc>\n    <lastmod>2025-12-15</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>\n  <url>\n    <loc>https://kisuke.dev/docs</loc>\n    <lastmod>2025-12-15</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>\n  <url>\n    <loc>https://kisuke.dev/architecture</loc>\n    <lastmod>2025-12-15</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n  <url>\n    <loc>https://kisuke.dev/download</loc>\n    <lastmod>2025-12-15</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>\n  <url>\n    <loc>https://kisuke.dev/roadmap</loc>\n    <lastmod>2025-12-15</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>\n  <url>\n    <loc>https://kisuke.dev/about</loc>\n    <lastmod>2025-12-15</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.6</priority>\n  </url>\n</urlset>\n",
+  "pages": {
+    "home": {
+      "title": "Kisuke — Local-First Context Reconstruction",
+      "description": "Reconstruct context from your code, commits, documents, and conversations. Everything stays local. AI is optional.",
+      "ogTitle": "Kisuke — Local-First Context Reconstruction",
+      "ogDescription": "Reconstruct context from your code, commits, documents, and conversations. Everything stays local. AI is optional.",
+      "ogImage": "https://kisuke.dev/og.svg",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterTitle": "Kisuke — Local-First Context Reconstruction",
+      "twitterDescription": "Reconstruct context from your code, commits, documents, and conversations. Everything stays local. AI is optional.",
+      "canonical": null,
+      "favicon": "https://kisuke.vercel.app/favicon.ico?favicon.2vob68tjqpejf.ico",
+      "structuredData": []
+    },
+    "docs": {
+      "title": "Documentation — Kisuke",
+      "description": "Learn how to use Kisuke for local-first context reconstruction. Guides, references, and CLI documentation.",
+      "ogTitle": "Documentation — Kisuke",
+      "ogDescription": "Learn how to use Kisuke for local-first context reconstruction. Guides, references, and CLI documentation.",
+      "ogImage": null,
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterTitle": "Kisuke — Local-First Context Reconstruction",
+      "twitterDescription": "Reconstruct context from your code, commits, documents, and conversations. Everything stays local. AI is optional.",
+      "canonical": null,
+      "favicon": "https://kisuke.vercel.app/favicon.ico?favicon.2vob68tjqpejf.ico",
+      "structuredData": []
+    },
+    "architecture": {
+      "title": "Architecture — Kisuke",
+      "description": "Clean Architecture, DDD, and local-first design. See how Kisuke is built — eight layers, zero coupling, Markdown as source of truth.",
+      "ogTitle": "Architecture — Kisuke",
+      "ogDescription": "Clean Architecture, DDD, and local-first design. See how Kisuke is built — eight layers, zero coupling, Markdown as source of truth.",
+      "ogImage": null,
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterTitle": "Kisuke — Local-First Context Reconstruction",
+      "twitterDescription": "Reconstruct context from your code, commits, documents, and conversations. Everything stays local. AI is optional.",
+      "canonical": null,
+      "favicon": "https://kisuke.vercel.app/favicon.ico?favicon.2vob68tjqpejf.ico",
+      "structuredData": []
+    },
+    "download": {
+      "title": "Download — Kisuke",
+      "description": "Install Kisuke — local-first context reconstruction engine. Zero runtime dependencies. MIT licensed.",
+      "ogTitle": "Download — Kisuke",
+      "ogDescription": "Install Kisuke — local-first context reconstruction engine. Zero runtime dependencies. MIT licensed.",
+      "ogImage": null,
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterTitle": "Kisuke — Local-First Context Reconstruction",
+      "twitterDescription": "Reconstruct context from your code, commits, documents, and conversations. Everything stays local. AI is optional.",
+      "canonical": null,
+      "favicon": "https://kisuke.vercel.app/favicon.ico?favicon.2vob68tjqpejf.ico",
+      "structuredData": []
+    },
+    "roadmap": {
+      "title": "Roadmap — Kisuke",
+      "description": "Kisuke development roadmap. From foundation to v1.0 — local-first context reconstruction for every developer.",
+      "ogTitle": "Roadmap — Kisuke",
+      "ogDescription": "Kisuke development roadmap. From foundation to v1.0 — local-first context reconstruction for every developer.",
+      "ogImage": null,
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterTitle": "Kisuke — Local-First Context Reconstruction",
+      "twitterDescription": "Reconstruct context from your code, commits, documents, and conversations. Everything stays local. AI is optional.",
+      "canonical": null,
+      "favicon": "https://kisuke.vercel.app/favicon.ico?favicon.2vob68tjqpejf.ico",
+      "structuredData": []
+    },
+    "about": {
+      "title": "About — Kisuke",
+      "description": "About Kisuke — local-first context reconstruction. Why it exists, how it works, and what guides it.",
+      "ogTitle": "About — Kisuke",
+      "ogDescription": "About Kisuke — local-first context reconstruction. Why it exists, how it works, and what guides it.",
+      "ogImage": null,
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterTitle": "Kisuke — Local-First Context Reconstruction",
+      "twitterDescription": "Reconstruct context from your code, commits, documents, and conversations. Everything stays local. AI is optional.",
+      "canonical": null,
+      "favicon": "https://kisuke.vercel.app/favicon.ico?favicon.2vob68tjqpejf.ico",
+      "structuredData": []
+    }
+  }
+}

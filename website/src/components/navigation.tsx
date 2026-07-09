@@ -23,13 +23,14 @@ function Navigation() {
   }, []);
 
   return (
-    <nav
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         isScrolled
           ? "bg-canvas/80 backdrop-blur-md border-b border-border-subtle"
           : "bg-transparent"
       }`}
     >
+    <nav aria-label="Main navigation">
       <div className="mx-auto max-w-[1200px] flex items-center justify-between h-14 px-6 md:px-8">
         <Link
           href="/"
@@ -116,6 +117,7 @@ function Navigation() {
         </div>
       )}
     </nav>
+    </header>
   );
 }
 

@@ -43,3 +43,4 @@ htmlcov/
 # Temporary
 tmp/
 temp/
+.vercel

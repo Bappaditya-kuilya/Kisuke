@@ -1,0 +1,920 @@
+{
+  "home": {
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Your second brain,on your machine."
+      },
+      {
+        "tag": "H2",
+        "text": "Everything you need,nothing you don't."
+      },
+      {
+        "tag": "H3",
+        "text": "Domain-Driven Design"
+      },
+      {
+        "tag": "H3",
+        "text": "Local Search Engine"
+      },
+      {
+        "tag": "H3",
+        "text": "Resume Engine"
+      },
+      {
+        "tag": "H3",
+        "text": "AI Abstraction Layer"
+      },
+      {
+        "tag": "H3",
+        "text": "Production Ready"
+      },
+      {
+        "tag": "H3",
+        "text": "Plugin Architecture"
+      },
+      {
+        "tag": "H2",
+        "text": "Eight layers.Zero coupling."
+      },
+      {
+        "tag": "H2",
+        "text": "Fast. Focused. Familiar."
+      },
+      {
+        "tag": "H2",
+        "text": "Open source.Local first."
+      },
+      {
+        "tag": "H3",
+        "text": "Product"
+      },
+      {
+        "tag": "H3",
+        "text": "Docs"
+      },
+      {
+        "tag": "H3",
+        "text": "Community"
+      },
+      {
+        "tag": "H3",
+        "text": "Legal"
+      }
+    ],
+    "h1Count": 1,
+    "h1Pass": true,
+    "landmarks": [
+      {
+        "role": "banner",
+        "exists": false
+      },
+      {
+        "role": "navigation",
+        "exists": true
+      },
+      {
+        "role": "main",
+        "exists": true
+      },
+      {
+        "role": "contentinfo",
+        "exists": true
+      },
+      {
+        "role": "complementary",
+        "exists": false
+      },
+      {
+        "role": "search",
+        "exists": false
+      }
+    ],
+    "ariaLabels": 2,
+    "images": [],
+    "imagesWithoutAlt": 0,
+    "focusVisible": {
+      "tag": "A",
+      "hasOutline": true,
+      "hasBoxShadow": false,
+      "hasBorder": true
+    },
+    "contrastIssues": [],
+    "animationCount": 56
+  },
+  "docs": {
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Learn Kisuke."
+      },
+      {
+        "tag": "H2",
+        "text": "Documentation Categories"
+      },
+      {
+        "tag": "H3",
+        "text": "Getting Started"
+      },
+      {
+        "tag": "H3",
+        "text": "Installation"
+      },
+      {
+        "tag": "H3",
+        "text": "Core Concepts"
+      },
+      {
+        "tag": "H3",
+        "text": "CLI Reference"
+      },
+      {
+        "tag": "H3",
+        "text": "Search Engine"
+      },
+      {
+        "tag": "H3",
+        "text": "Resume Engine"
+      },
+      {
+        "tag": "H3",
+        "text": "AI Abstraction"
+      },
+      {
+        "tag": "H3",
+        "text": "Integrations"
+      },
+      {
+        "tag": "H3",
+        "text": "Architecture"
+      },
+      {
+        "tag": "H3",
+        "text": "API"
+      },
+      {
+        "tag": "H3",
+        "text": "FAQ"
+      },
+      {
+        "tag": "H2",
+        "text": "Up and running in 60 seconds."
+      },
+      {
+        "tag": "H3",
+        "text": "Install Kisuke"
+      },
+      {
+        "tag": "H3",
+        "text": "Initialize your repository"
+      },
+      {
+        "tag": "H3",
+        "text": "Create a mission"
+      },
+      {
+        "tag": "H3",
+        "text": "Add a project and tasks"
+      },
+      {
+        "tag": "H3",
+        "text": "Resume your context"
+      },
+      {
+        "tag": "H3",
+        "text": "Search across everything"
+      },
+      {
+        "tag": "H2",
+        "text": "Browse by topic."
+      },
+      {
+        "tag": "H3",
+        "text": "Vision & Philosophy"
+      },
+      {
+        "tag": "H3",
+        "text": "Domain Model"
+      },
+      {
+        "tag": "H3",
+        "text": "Markdown Storage"
+      },
+      {
+        "tag": "H3",
+        "text": "Search Engine"
+      },
+      {
+        "tag": "H3",
+        "text": "Resume Engine"
+      },
+      {
+        "tag": "H3",
+        "text": "CLI Specification"
+      },
+      {
+        "tag": "H3",
+        "text": "AI Abstraction Layer"
+      },
+      {
+        "tag": "H3",
+        "text": "Integrations"
+      },
+      {
+        "tag": "H3",
+        "text": "Engineering Architecture"
+      },
+      {
+        "tag": "H3",
+        "text": "Review System"
+      },
+      {
+        "tag": "H3",
+        "text": "Plugin System"
+      },
+      {
+        "tag": "H3",
+        "text": "Security"
+      },
+      {
+        "tag": "H2",
+        "text": "CLI Cheat Sheet."
+      },
+      {
+        "tag": "H3",
+        "text": "Getting Started"
+      },
+      {
+        "tag": "H3",
+        "text": "Context"
+      },
+      {
+        "tag": "H3",
+        "text": "Entities"
+      },
+      {
+        "tag": "H3",
+        "text": "Search & Review"
+      },
+      {
+        "tag": "H3",
+        "text": "Management"
+      },
+      {
+        "tag": "H3",
+        "text": "Product"
+      },
+      {
+        "tag": "H3",
+        "text": "Docs"
+      },
+      {
+        "tag": "H3",
+        "text": "Community"
+      },
+      {
+        "tag": "H3",
+        "text": "Legal"
+      }
+    ],
+    "h1Count": 1,
+    "h1Pass": true,
+    "landmarks": [
+      {
+        "role": "banner",
+        "exists": false
+      },
+      {
+        "role": "navigation",
+        "exists": true
+      },
+      {
+        "role": "main",
+        "exists": true
+      },
+      {
+        "role": "contentinfo",
+        "exists": true
+      },
+      {
+        "role": "complementary",
+        "exists": false
+      },
+      {
+        "role": "search",
+        "exists": false
+      }
+    ],
+    "ariaLabels": 21,
+    "images": [],
+    "imagesWithoutAlt": 0,
+    "focusVisible": {
+      "tag": "A",
+      "hasOutline": true,
+      "hasBoxShadow": false,
+      "hasBorder": true
+    },
+    "contrastIssues": [],
+    "animationCount": 131
+  },
+  "architecture": {
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Eight layers.Zero coupling."
+      },
+      {
+        "tag": "H2",
+        "text": "High-level architecture."
+      },
+      {
+        "tag": "H3",
+        "text": "Dependencies point inward"
+      },
+      {
+        "tag": "H3",
+        "text": "Markdown is source of truth"
+      },
+      {
+        "tag": "H3",
+        "text": "AI is optional"
+      },
+      {
+        "tag": "H2",
+        "text": "Every layer has one job."
+      },
+      {
+        "tag": "H3",
+        "text": "CLI (Presentation)"
+      },
+      {
+        "tag": "H3",
+        "text": "Application"
+      },
+      {
+        "tag": "H3",
+        "text": "Domain (Core)"
+      },
+      {
+        "tag": "H3",
+        "text": "Infrastructure"
+      },
+      {
+        "tag": "H3",
+        "text": "Integrations"
+      },
+      {
+        "tag": "H3",
+        "text": "AI"
+      },
+      {
+        "tag": "H2",
+        "text": "From Markdown to output."
+      },
+      {
+        "tag": "H3",
+        "text": "Capture flow"
+      },
+      {
+        "tag": "H3",
+        "text": "Resume flow"
+      },
+      {
+        "tag": "H2",
+        "text": "Real project layout."
+      },
+      {
+        "tag": "H2",
+        "text": "Architecture Decision Records."
+      },
+      {
+        "tag": "H2",
+        "text": "Measured. Verified."
+      },
+      {
+        "tag": "H3",
+        "text": "Benchmark Results"
+      },
+      {
+        "tag": "H3",
+        "text": "Product"
+      },
+      {
+        "tag": "H3",
+        "text": "Docs"
+      },
+      {
+        "tag": "H3",
+        "text": "Community"
+      },
+      {
+        "tag": "H3",
+        "text": "Legal"
+      }
+    ],
+    "h1Count": 1,
+    "h1Pass": true,
+    "landmarks": [
+      {
+        "role": "banner",
+        "exists": false
+      },
+      {
+        "role": "navigation",
+        "exists": true
+      },
+      {
+        "role": "main",
+        "exists": true
+      },
+      {
+        "role": "contentinfo",
+        "exists": true
+      },
+      {
+        "role": "complementary",
+        "exists": false
+      },
+      {
+        "role": "search",
+        "exists": false
+      }
+    ],
+    "ariaLabels": 5,
+    "images": [],
+    "imagesWithoutAlt": 0,
+    "focusVisible": {
+      "tag": "A",
+      "hasOutline": true,
+      "hasBoxShadow": false,
+      "hasBorder": true
+    },
+    "contrastIssues": [],
+    "animationCount": 67
+  },
+  "download": {
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Download Kisuke."
+      },
+      {
+        "tag": "H2",
+        "text": "One command."
+      },
+      {
+        "tag": "H3",
+        "text": "uv"
+      },
+      {
+        "tag": "H3",
+        "text": "pip"
+      },
+      {
+        "tag": "H3",
+        "text": "pipx"
+      },
+      {
+        "tag": "H3",
+        "text": "From source"
+      },
+      {
+        "tag": "H2",
+        "text": "Minimal footprint."
+      },
+      {
+        "tag": "H2",
+        "text": "Up and running in 30 seconds."
+      },
+      {
+        "tag": "H2",
+        "text": "Everything you need."
+      },
+      {
+        "tag": "H2",
+        "text": "Latest release."
+      },
+      {
+        "tag": "H3",
+        "text": "v0.1.0"
+      },
+      {
+        "tag": "H2",
+        "text": "Production quality."
+      },
+      {
+        "tag": "H2",
+        "text": "Common questions."
+      },
+      {
+        "tag": "H3",
+        "text": "Product"
+      },
+      {
+        "tag": "H3",
+        "text": "Docs"
+      },
+      {
+        "tag": "H3",
+        "text": "Community"
+      },
+      {
+        "tag": "H3",
+        "text": "Legal"
+      }
+    ],
+    "h1Count": 1,
+    "h1Pass": true,
+    "landmarks": [
+      {
+        "role": "banner",
+        "exists": false
+      },
+      {
+        "role": "navigation",
+        "exists": true
+      },
+      {
+        "role": "main",
+        "exists": true
+      },
+      {
+        "role": "contentinfo",
+        "exists": true
+      },
+      {
+        "role": "complementary",
+        "exists": false
+      },
+      {
+        "role": "search",
+        "exists": false
+      }
+    ],
+    "ariaLabels": 7,
+    "images": [],
+    "imagesWithoutAlt": 0,
+    "focusVisible": {
+      "tag": "A",
+      "hasOutline": true,
+      "hasBoxShadow": false,
+      "hasBorder": true
+    },
+    "contrastIssues": [],
+    "animationCount": 72
+  },
+  "roadmap": {
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Roadmap."
+      },
+      {
+        "tag": "H2",
+        "text": "v0.1.0 released."
+      },
+      {
+        "tag": "H2",
+        "text": "12 milestones. All completed."
+      },
+      {
+        "tag": "H3",
+        "text": "M0 — Repository Bootstrap"
+      },
+      {
+        "tag": "H3",
+        "text": "M1 — Domain Core"
+      },
+      {
+        "tag": "H3",
+        "text": "M2 — Markdown Storage"
+      },
+      {
+        "tag": "H3",
+        "text": "M3 — Parser & Validation"
+      },
+      {
+        "tag": "H3",
+        "text": "M4 — Search Engine"
+      },
+      {
+        "tag": "H3",
+        "text": "M5 — Resume Engine"
+      },
+      {
+        "tag": "H3",
+        "text": "M6 — CLI"
+      },
+      {
+        "tag": "H3",
+        "text": "M7 — Review System"
+      },
+      {
+        "tag": "H3",
+        "text": "M8 — Integrations"
+      },
+      {
+        "tag": "H3",
+        "text": "M9 — AI Abstraction"
+      },
+      {
+        "tag": "H3",
+        "text": "M10 — Plugin System"
+      },
+      {
+        "tag": "H3",
+        "text": "M11 — Polish & Release"
+      },
+      {
+        "tag": "H3",
+        "text": "Up Next"
+      },
+      {
+        "tag": "H3",
+        "text": "v0.2 — Workflow Improvements"
+      },
+      {
+        "tag": "H3",
+        "text": "v0.3 — Plugin Ecosystem"
+      },
+      {
+        "tag": "H3",
+        "text": "v1.0 — Stable Release"
+      },
+      {
+        "tag": "H2",
+        "text": "What's next."
+      },
+      {
+        "tag": "H3",
+        "text": "Foundation"
+      },
+      {
+        "tag": "H3",
+        "text": "Workflow Improvements"
+      },
+      {
+        "tag": "H3",
+        "text": "Plugin Ecosystem"
+      },
+      {
+        "tag": "H3",
+        "text": "Stable Production Release"
+      },
+      {
+        "tag": "H2",
+        "text": "What guides us."
+      },
+      {
+        "tag": "H3",
+        "text": "Markdown First"
+      },
+      {
+        "tag": "H3",
+        "text": "Offline First"
+      },
+      {
+        "tag": "H3",
+        "text": "AI Optional"
+      },
+      {
+        "tag": "H3",
+        "text": "Open Source"
+      },
+      {
+        "tag": "H3",
+        "text": "Deterministic"
+      },
+      {
+        "tag": "H3",
+        "text": "Developer First"
+      },
+      {
+        "tag": "H2",
+        "text": "A developer knowledge system."
+      },
+      {
+        "tag": "H2",
+        "text": "How to contribute."
+      },
+      {
+        "tag": "H3",
+        "text": "Development Setup"
+      },
+      {
+        "tag": "H3",
+        "text": "Architecture Changes"
+      },
+      {
+        "tag": "H3",
+        "text": "Product"
+      },
+      {
+        "tag": "H3",
+        "text": "Docs"
+      },
+      {
+        "tag": "H3",
+        "text": "Community"
+      },
+      {
+        "tag": "H3",
+        "text": "Legal"
+      }
+    ],
+    "h1Count": 1,
+    "h1Pass": true,
+    "landmarks": [
+      {
+        "role": "banner",
+        "exists": false
+      },
+      {
+        "role": "navigation",
+        "exists": true
+      },
+      {
+        "role": "main",
+        "exists": true
+      },
+      {
+        "role": "contentinfo",
+        "exists": true
+      },
+      {
+        "role": "complementary",
+        "exists": false
+      },
+      {
+        "role": "search",
+        "exists": false
+      }
+    ],
+    "ariaLabels": 4,
+    "images": [],
+    "imagesWithoutAlt": 0,
+    "focusVisible": {
+      "tag": "A",
+      "hasOutline": true,
+      "hasBoxShadow": false,
+      "hasBorder": true
+    },
+    "contrastIssues": [],
+    "animationCount": 58
+  },
+  "about": {
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "About Kisuke."
+      },
+      {
+        "tag": "H2",
+        "text": "What guides us."
+      },
+      {
+        "tag": "H3",
+        "text": "Markdown First"
+      },
+      {
+        "tag": "H3",
+        "text": "Offline First"
+      },
+      {
+        "tag": "H3",
+        "text": "AI Optional"
+      },
+      {
+        "tag": "H3",
+        "text": "Deterministic"
+      },
+      {
+        "tag": "H3",
+        "text": "Open Source"
+      },
+      {
+        "tag": "H3",
+        "text": "Developer First"
+      },
+      {
+        "tag": "H2",
+        "text": "The problem."
+      },
+      {
+        "tag": "H3",
+        "text": "Losing context"
+      },
+      {
+        "tag": "H3",
+        "text": "Fragmented notes"
+      },
+      {
+        "tag": "H3",
+        "text": "Weak search"
+      },
+      {
+        "tag": "H3",
+        "text": "AI without memory"
+      },
+      {
+        "tag": "H2",
+        "text": "The solution."
+      },
+      {
+        "tag": "H2",
+        "text": "How it works."
+      },
+      {
+        "tag": "H2",
+        "text": "Measured. Verified."
+      },
+      {
+        "tag": "H2",
+        "text": "Built with."
+      },
+      {
+        "tag": "H3",
+        "text": "Python"
+      },
+      {
+        "tag": "H3",
+        "text": "SQLite"
+      },
+      {
+        "tag": "H3",
+        "text": "Markdown"
+      },
+      {
+        "tag": "H3",
+        "text": "Next.js"
+      },
+      {
+        "tag": "H3",
+        "text": "Tailwind CSS"
+      },
+      {
+        "tag": "H3",
+        "text": "Framer Motion"
+      },
+      {
+        "tag": "H2",
+        "text": "Community-driven."
+      },
+      {
+        "tag": "H3",
+        "text": "Product"
+      },
+      {
+        "tag": "H3",
+        "text": "Docs"
+      },
+      {
+        "tag": "H3",
+        "text": "Community"
+      },
+      {
+        "tag": "H3",
+        "text": "Legal"
+      }
+    ],
+    "h1Count": 1,
+    "h1Pass": true,
+    "landmarks": [
+      {
+        "role": "banner",
+        "exists": false
+      },
+      {
+        "role": "navigation",
+        "exists": true
+      },
+      {
+        "role": "main",
+        "exists": true
+      },
+      {
+        "role": "contentinfo",
+        "exists": true
+      },
+      {
+        "role": "complementary",
+        "exists": false
+      },
+      {
+        "role": "search",
+        "exists": false
+      }
+    ],
+    "ariaLabels": 4,
+    "images": [],
+    "imagesWithoutAlt": 0,
+    "focusVisible": {
+      "tag": "A",
+      "hasOutline": true,
+      "hasBoxShadow": false,
+      "hasBorder": true
+    },
+    "contrastIssues": [],
+    "animationCount": 53
+  }
+}
