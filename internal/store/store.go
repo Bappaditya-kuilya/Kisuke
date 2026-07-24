@@ -2,13 +2,20 @@ package store
 
 import (
 	"database/sql"
+	"embed"
 	"fmt"
 	"os"
 	"path/filepath"
 	"time"
 
+	"github.com/golang-migrate/migrate/v4"
+	"github.com/golang-migrate/migrate/v4/database/sqlite3"
+	"github.com/golang-migrate/migrate/v4/source/iofs"
 	_ "github.com/mattn/go-sqlite3"
 )
+
+//go:embed migrations/*.sql
+var migrationFS embed.FS
 
 type sqliteStore struct {
 	db *sql.DB
@@ -57,6 +64,41 @@ func NewStore(dbPath string) (Store, error) {
 }
 
 func (s *sqliteStore) initSchema() error {
+	// For in-memory databases, skip migrations and use direct schema
+	if isMemoryDB(s.db) {
+		return s.initSchemaDirect()
+	}
+
+	// Use golang-migrate for file-based databases
+	driver, err := sqlite3.WithInstance(s.db, &sqlite3.Config{})
+	if err != nil {
+		return fmt.Errorf("create sqlite3 driver: %w", err)
+	}
+
+	source, err := iofs.New(migrationFS, "migrations")
+	if err != nil {
+		return fmt.Errorf("create iofs source: %w", err)
+	}
+
+	m, err := migrate.NewWithInstance("iofs", source, "sqlite3", driver)
+	if err != nil {
+		return fmt.Errorf("create migrate instance: %w", err)
+	}
+
+	if err := m.Up(); err != nil && err != migrate.ErrNoChange {
+		return fmt.Errorf("run migrations: %w", err)
+	}
+
+	return nil
+}
+
+func isMemoryDB(db *sql.DB) bool {
+	var path string
+	err := db.QueryRow("PRAGMA database_list").Scan(&path, &path, &path)
+	return err != nil || path == ""
+}
+
+func (s *sqliteStore) initSchemaDirect() error {
 	// Create migrations table first
 	if _, err := s.db.Exec(`
 		CREATE TABLE IF NOT EXISTS migrations (
@@ -68,9 +110,6 @@ func (s *sqliteStore) initSchema() error {
 		return fmt.Errorf("create migrations table: %w", err)
 	}
 
-	// For in-memory databases, we can't use file-based migrations
-	// Just run the initial schema directly
-	// TODO: Use proper migration library for file-based databases
 	schema := `
 	CREATE TABLE IF NOT EXISTS vault_links (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -283,12 +322,15 @@ func (s *sqliteStore) SearchVaultNotesDirect(query string, limit int) ([]VaultLi
 }
 
 func (s *sqliteStore) GetUpcomingEvents(hours int, projectTag string) ([]CalendarEvent, error) {
+	now := time.Now().Format(time.RFC3339)
+	later := time.Now().Add(time.Duration(hours) * time.Hour).Format(time.RFC3339)
+
 	query := `
 		SELECT id, summary, description, start_time, end_time, calendar_id, project_tag, synced_at
 		FROM calendar_events
-		WHERE start_time > datetime('now') AND start_time < datetime('now', ?)
+		WHERE start_time > ? AND start_time < ?
 	`
-	args := []any{fmt.Sprintf("+%d hours", hours)}
+	args := []any{now, later}
 
 	if projectTag != "" {
 		query += ` AND project_tag = ?`
