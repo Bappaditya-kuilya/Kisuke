@@ -1,6 +1,14 @@
 # kisuke-mcp
 
-Personal AI Context Layer - A lightweight Go MCP server that connects your code context (Kisuke) with your knowledge vault (Obsidian) and tools (Calendar, etc.).
+[![Go Version](https://img.shields.io/badge/Go-1.24+-00ADD8?logo=go)](https://go.dev/)
+[![Build Status](https://github.com/Bappaditya-kuilya/kisuke-mcp/workflows/CI/badge.svg)](https://github.com/Bappaditya-kuilya/kisuke-mcp/actions)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Bappaditya-kuilya/kisuke-mcp)](https://goreportcard.com/report/github.com/Bappaditya-kuilya/kisuke-mcp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Binary Size](https://img.shields.io/badge/Binary-~10MB-brightgreen)]()
+
+Personal AI Context Layer — A lightweight Go MCP server that connects your code context (Kisuke) with your knowledge vault (Obsidian) and tools (Calendar, etc.).
+
+**Website:** [kisuke.vercel.app](https://kisuke.vercel.app)
 
 ## Architecture
 
@@ -12,7 +20,7 @@ Personal AI Context Layer - A lightweight Go MCP server that connects your code 
 └────────────────────────┬─────────────────────────────────┘
                          │ MCP (stdio)
 ┌────────────────────────▼─────────────────────────────────┐
-│                  kisuke-mcp (Go binary ~5MB)               │
+│                  kisuke-mcp (Go binary ~10MB)              │
 │                                                           │
 │  ┌─────────────┐  ┌──────────────┐  ┌─────────────────┐  │
 │  │ Context     │  │ MCP Client   │  │ Calendar        │  │
@@ -37,12 +45,12 @@ Personal AI Context Layer - A lightweight Go MCP server that connects your code 
 
 | Component | RAM |
 |-----------|-----|
-| Go binary | ~5 MB |
+| Go binary | ~10 MB |
 | Runtime (goroutines, SQLite pool) | ~10 MB |
 | SQLite cache | ~5 MB |
 | FTS5 index | ~5 MB |
 | MCP client connections | ~2 MB/server |
-| **Total baseline** | **~25-30 MB** |
+| **Total baseline** | **~30-35 MB** |
 | Embedding model (optional, v2) | ~80-200 MB |
 
 **Peak total: ~105 MB** (well under 200 MB cap)
@@ -51,7 +59,7 @@ Personal AI Context Layer - A lightweight Go MCP server that connects your code 
 
 ### 1. Forgotten Note Retrieval
 When you start a coding session, kisuke-mcp finds notes you wrote but forgot about:
-- Linked notes (explicit vault_links)
+- Linked notes (explicit `vault_links`)
 - Inferred notes (semantic search via FTS5)
 - Returns top 5 with confidence scores and reason
 
@@ -83,7 +91,7 @@ Built-in tracking for your learning goals:
 
 ```bash
 # Build
-go build -o kisuke-mcp ./cmd/kisuke-mcp
+go build -tags fts5 -o kisuke-mcp ./cmd/kisuke-mcp
 
 # Initialize (one-time)
 kisuke-mcp init
@@ -230,38 +238,49 @@ On first run, these are set (editable via `update_profile`):
 ## Development
 
 ```bash
-# Run tests
-go test ./...
+# Run tests (with race detector)
+go test -tags fts5 -race ./internal/...
 
 # Build
-go build -o kisuke-mcp ./cmd/kisuke-mcp
+go build -tags fts5 -o kisuke-mcp ./cmd/kisuke-mcp
 
 # Run with custom paths
 VAULT_PATH=/path/to/vault KISUKE_DB=/path/to/kisuke.db ./kisuke-mcp
 
 # Index vault notes (run periodically)
 ./kisuke-mcp index-vault
+
+# Export all data (JSON or Markdown)
+./kisuke-mcp export --format json
+./kisuke-mcp export --format markdown
 ```
 
 ## Project Structure
 
 ```
 kisuke-mcp/
+├── .github/workflows/ci.yml      # CI/CD pipeline
 ├── cmd/
 │   └── kisuke-mcp/
-│       └── main.go          # Entry point
+│       └── main.go               # Entry point (subcommands: init, export, serve)
 ├── internal/
 │   ├── context/
-│   │   ├── engine.go        # Context engine - determines relevance
-│   │   └── types.go         # Shared types
+│   │   ├── engine.go             # Context engine - determines relevance
+│   │   ├── engine_test.go        # Context engine tests
+│   │   └── types.go              # Shared types
 │   ├── mcp/
-│   │   └── server.go        # MCP server with all tools/resources/prompts
+│   │   └── server.go             # MCP server with all tools/resources/prompts
 │   ├── store/
-│   │   └── store.go         # SQLite operations
+│   │   ├── store.go              # SQLite operations (golang-migrate)
+│   │   ├── store_test.go         # Store unit tests
+│   │   ├── types.go              # Store interface + types
+│   │   └── migrations/           # Embedded SQL migrations
 │   ├── calendar/
-│   │   └── calendar.go      # Google Calendar integration
+│   │   └── calendar.go           # Google Calendar integration
 │   └── kisuke/
-│       └── client.go        # Kisuke DB client
+│       └── resume.go             # Kisuke resume engine client
+├── CHANGELOG.md                  # Release history
+├── TOP_TIER_GUIDE.md             # Roadmap to top-tier quality
 ├── go.mod
 ├── go.sum
 └── README.md
@@ -271,7 +290,7 @@ kisuke-mcp/
 
 > **Storage is solved. Retrieval is the problem.**
 
-You have notes everywhere (Notion, Google Docs, Obsidian). The issue isn't storing them - it's **surfacing the right one at the right time**.
+You have notes everywhere (Notion, Google Docs, Obsidian). The issue isn't storing them — it's **surfacing the right one at the right time**.
 
 kisuke-mcp doesn't add another note-taking app. It connects what you already have:
 - **Kisuke** knows what you're building (code context)
@@ -281,12 +300,14 @@ kisuke-mcp doesn't add another note-taking app. It connects what you already hav
 
 ## Roadmap
 
-- [ ] v0.1: Core MCP server, vault_links, FTS5 search, profile, skills
-- [ ] v0.2: Calendar sync, MCP host (connect to other servers)
-- [ ] v0.3: Embedding-based semantic search (optional, adds ~80MB)
+See [TOP_TIER_GUIDE.md](TOP_TIER_GUIDE.md) for detailed roadmap and quality gates.
+
+- [x] v0.1: Core MCP server, vault_links, FTS5 search, profile, skills, migrations, export, structured logging
+- [ ] v0.2: Health endpoint, metrics, watch mode, session feedback, integration tests
+- [ ] v0.3: Optional embedding-based semantic search (build tag `embeddings`)
 - [ ] v0.4: Auto-link suggestions from session analysis
 - [ ] v0.5: Cross-machine sync via git
 
 ## License
 
-MIT - Your data, your machine, your rules.
+MIT — Your data, your machine, your rules.
