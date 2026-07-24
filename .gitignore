@@ -1,5 +1,6 @@
 # Binary
 kisuke-mcp
+context-mcp
 
 # Database
 *.db
@@ -32,5 +33,4 @@ Thumbs.db
 # Temporary
 tmp/
 temp/
-*.tmpcontext-mcp
-context-mcp
+*.tmp
