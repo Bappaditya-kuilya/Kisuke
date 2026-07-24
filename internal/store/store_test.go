@@ -46,10 +46,10 @@ func TestStore_BasicOperations(t *testing.T) {
 	}
 
 	// Test FTS index
-	if err := s.IndexVaultNote("note1.md", "Note 1", "This is test content about Docker"); err != nil {
+	if err := s.IndexVaultNote("note1.md", "Note 1", "This is test content about testing"); err != nil {
 		t.Fatal(err)
 	}
-	results, err := s.SearchVaultNotesDirect("Docker", 10)
+	results, err := s.SearchVaultNotesDirect("testing", 10)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -58,7 +58,7 @@ func TestStore_BasicOperations(t *testing.T) {
 	}
 
 	// Test skill progress
-	if err := s.UpdateSkillProgress("docker", 2, true); err != nil {
+	if err := s.UpdateSkillProgress("testing", 2, true); err != nil {
 		t.Fatal(err)
 	}
 	skills, err := s.GetSkillProgress()
@@ -150,10 +150,10 @@ func TestStore_ConfidenceScoring(t *testing.T) {
 	}
 
 	// Test inferred link gets lower confidence
-	if err := s.IndexVaultNote("note2.md", "Note 2", "This is about Docker"); err != nil {
+	if err := s.IndexVaultNote("note2.md", "Note 2", "This is about testing"); err != nil {
 		t.Fatal(err)
 	}
-	links, err := s.SearchVaultNotesDirect("Docker", 10)
+	links, err := s.SearchVaultNotesDirect("testing", 10)
 	if err != nil {
 		t.Fatal(err)
 	}
