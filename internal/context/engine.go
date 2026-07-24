@@ -412,7 +412,7 @@ func (e *Engine) readVaultNote(path string) (content, title string) {
 	if e.vaultPath == "" {
 		e.vaultPath = os.Getenv("VAULT_PATH")
 		if e.vaultPath == "" {
-			e.vaultPath = "/mnt/d/Obsidian Vault/AI Research"
+			return "", ""
 		}
 	}
 

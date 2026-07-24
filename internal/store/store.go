@@ -202,13 +202,13 @@ func (s *sqliteStore) InitSchema() error {
 
 func (s *sqliteStore) SetDefaultProfile() error {
 	defaults := map[string]string{
-		"name":            "Bappaditya Kuilya",
-		"role":            "AI Engineer (aspiring)",
-		"goal":            "Become elite engineer, master Docker, PostgreSQL, DSA, build resume projects",
+		"name":            "Developer",
+		"role":            "Software Engineer",
+		"goal":            "Build great software, master tools, ship projects",
 		"build_style":     "Clean architecture, test-driven, well-documented, minimal deps",
 		"preferred_stack": "Go, Python, SQLite, Docker, PostgreSQL",
-		"learning_focus":  "Docker, PostgreSQL, DSA, System Design, AI/ML",
-		"vault_path":      "/mnt/d/Obsidian Vault/AI Research",
+		"learning_focus":  "System Design, Distributed Systems, AI/ML",
+		"vault_path":      "",
 		"kisuke_db":       "",
 	}
 

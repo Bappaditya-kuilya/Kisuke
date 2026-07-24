@@ -1,8 +1,8 @@
 # kisuke-mcp
 
 [![Go Version](https://img.shields.io/badge/Go-1.24+-00ADD8?logo=go)](https://go.dev/)
-[![Build Status](https://github.com/Bappaditya-kuilya/kisuke-mcp/workflows/CI/badge.svg)](https://github.com/Bappaditya-kuilya/kisuke-mcp/actions)
-[![Go Report Card](https://goreportcard.com/badge/github.com/Bappaditya-kuilya/kisuke-mcp)](https://goreportcard.com/report/github.com/Bappaditya-kuilya/kisuke-mcp)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/kisuke/kisuke-mcp/ci.yml?branch=main)](https://github.com/kisuke/kisuke-mcp/actions)
+[![Go Report Card](https://goreportcard.com/badge/github.com/kisuke/kisuke-mcp)](https://goreportcard.com/report/github.com/kisuke/kisuke-mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Binary Size](https://img.shields.io/badge/Binary-~10MB-brightgreen)]()
 
@@ -226,12 +226,12 @@ CREATE TABLE calendar_events (
 On first run, these are set (editable via `update_profile`):
 ```json
 {
-  "name": "Bappaditya Kuilya",
-  "role": "AI Engineer (aspiring)",
-  "goal": "Become elite engineer, master Docker, PostgreSQL, DSA, build resume projects",
+  "name": "Developer",
+  "role": "Software Engineer",
+  "goal": "Build great software, master tools, ship projects",
   "build_style": "Clean architecture, test-driven, well-documented, minimal deps",
   "preferred_stack": "Go, Python, SQLite, Docker, PostgreSQL",
-  "learning_focus": "Docker, PostgreSQL, DSA, System Design, AI/ML"
+  "learning_focus": "System Design, Distributed Systems, AI/ML"
 }
 ```
 

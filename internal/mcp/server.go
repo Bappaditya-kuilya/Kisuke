@@ -242,7 +242,7 @@ func (s *Server) handleSearchVault(ctx context.Context, req mcp.CallToolRequest)
 func (s *Server) readVaultNote(path string) (content, title string) {
 	vaultPath := os.Getenv("VAULT_PATH")
 	if vaultPath == "" {
-		vaultPath = "/mnt/d/Obsidian Vault/AI Research"
+		return "", ""
 	}
 
 	fullPath := filepath.Join(vaultPath, path)
@@ -713,7 +713,7 @@ func (s *Server) handleIndexVault(ctx context.Context, req mcp.CallToolRequest) 
 
 	vaultPath := os.Getenv("VAULT_PATH")
 	if vaultPath == "" {
-		vaultPath = "/mnt/d/Obsidian Vault/AI Research"
+		vaultPath = ""
 	}
 
 	indexed := 0
