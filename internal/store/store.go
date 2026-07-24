@@ -202,7 +202,6 @@ func (s *sqliteStore) SetDefaultProfile() error {
 		"preferred_stack": "",
 		"learning_focus":  "",
 		"vault_path":      "",
-		"kisuke_db":       "",
 	}
 
 	tx, err := s.db.Begin()
