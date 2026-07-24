@@ -1,20 +1,20 @@
 -- 000001_initial_schema.up.sql
--- Initial schema for kisuke-mcp
+-- Initial schema for context-mcp
 
 CREATE TABLE IF NOT EXISTS vault_links (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	vault_note_path TEXT NOT NULL,
 	vault_note_title TEXT NOT NULL,
-	kisuke_entity_type TEXT NOT NULL,
-	kisuke_entity_id TEXT NOT NULL,
+	entity_type TEXT NOT NULL,
+	entity_id TEXT NOT NULL,
 	link_type TEXT DEFAULT 'reference',
 	confidence REAL DEFAULT 0.8,
 	created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-	UNIQUE(vault_note_path, kisuke_entity_type, kisuke_entity_id)
+	UNIQUE(vault_note_path, entity_type, entity_id)
 );
 
-CREATE INDEX IF NOT EXISTS idx_vault_links_entity ON vault_links(kisuke_entity_type, kisuke_entity_id);
+CREATE INDEX IF NOT EXISTS idx_vault_links_entity ON vault_links(entity_type, entity_id);
 CREATE INDEX IF NOT EXISTS idx_vault_links_note ON vault_links(vault_note_path);
 
 CREATE VIRTUAL TABLE IF NOT EXISTS notes_fts USING fts5(

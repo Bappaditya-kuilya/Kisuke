@@ -22,17 +22,14 @@ type sqliteStore struct {
 }
 
 func NewStore(dbPath string) (Store, error) {
-	// Skip filesystem operations for in-memory databases
 	isMemory := dbPath == ":memory:"
 
 	if !isMemory {
-		// Ensure parent directory has restrictive permissions
 		dbDir := filepath.Dir(dbPath)
 		if err := os.MkdirAll(dbDir, 0o700); err != nil {
 			return nil, fmt.Errorf("create db directory: %w", err)
 		}
 
-		// Set restrictive permissions on database file if it exists
 		if _, err := os.Stat(dbPath); err == nil {
 			if err := os.Chmod(dbPath, 0o600); err != nil {
 				return nil, fmt.Errorf("chmod db file: %w", err)
@@ -53,7 +50,6 @@ func NewStore(dbPath string) (Store, error) {
 		return nil, fmt.Errorf("init schema: %w", err)
 	}
 
-	// Ensure database file has restrictive permissions after creation
 	if !isMemory {
 		if err := os.Chmod(dbPath, 0o600); err != nil {
 			return nil, fmt.Errorf("chmod db file: %w", err)
@@ -64,12 +60,10 @@ func NewStore(dbPath string) (Store, error) {
 }
 
 func (s *sqliteStore) initSchema() error {
-	// For in-memory databases, skip migrations and use direct schema
 	if isMemoryDB(s.db) {
 		return s.initSchemaDirect()
 	}
 
-	// Use golang-migrate for file-based databases
 	driver, err := sqlite3.WithInstance(s.db, &sqlite3.Config{})
 	if err != nil {
 		return fmt.Errorf("create sqlite3 driver: %w", err)
@@ -99,7 +93,6 @@ func isMemoryDB(db *sql.DB) bool {
 }
 
 func (s *sqliteStore) initSchemaDirect() error {
-	// Create migrations table first
 	if _, err := s.db.Exec(`
 		CREATE TABLE IF NOT EXISTS migrations (
 			version INTEGER PRIMARY KEY,
@@ -115,16 +108,16 @@ func (s *sqliteStore) initSchemaDirect() error {
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		vault_note_path TEXT NOT NULL,
 		vault_note_title TEXT NOT NULL,
-		kisuke_entity_type TEXT NOT NULL,
-		kisuke_entity_id TEXT NOT NULL,
+		entity_type TEXT NOT NULL,
+		entity_id TEXT NOT NULL,
 		link_type TEXT DEFAULT 'reference',
 		confidence REAL DEFAULT 0.8,
 		created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 		updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-		UNIQUE(vault_note_path, kisuke_entity_type, kisuke_entity_id)
+		UNIQUE(vault_note_path, entity_type, entity_id)
 	);
 
-	CREATE INDEX IF NOT EXISTS idx_vault_links_entity ON vault_links(kisuke_entity_type, kisuke_entity_id);
+	CREATE INDEX IF NOT EXISTS idx_vault_links_entity ON vault_links(entity_type, entity_id);
 	CREATE INDEX IF NOT EXISTS idx_vault_links_note ON vault_links(vault_note_path);
 
 	CREATE VIRTUAL TABLE IF NOT EXISTS notes_fts USING fts5(
@@ -258,7 +251,7 @@ func (s *sqliteStore) SearchVaultNotes(query string, limit int) ([]VaultLink, er
 	}
 
 	rows, err := s.db.Query(`
-		SELECT vl.id, vl.vault_note_path, vl.vault_note_title, vl.kisuke_entity_type, vl.kisuke_entity_id,
+		SELECT vl.id, vl.vault_note_path, vl.vault_note_title, vl.entity_type, vl.entity_id,
 		       vl.link_type, vl.confidence, vl.created_at, vl.updated_at
 		FROM vault_links vl
 		WHERE vl.vault_note_path IN (
@@ -274,7 +267,7 @@ func (s *sqliteStore) SearchVaultNotes(query string, limit int) ([]VaultLink, er
 	var links []VaultLink
 	for rows.Next() {
 		var l VaultLink
-		if err := rows.Scan(&l.ID, &l.VaultNotePath, &l.VaultNoteTitle, &l.KisukeEntityType, &l.KisukeEntityID,
+		if err := rows.Scan(&l.ID, &l.VaultNotePath, &l.VaultNoteTitle, &l.EntityType, &l.EntityID,
 			&l.LinkType, &l.Confidence, &l.CreatedAt, &l.UpdatedAt); err != nil {
 			return nil, err
 		}
@@ -308,14 +301,14 @@ func (s *sqliteStore) SearchVaultNotesDirect(query string, limit int) ([]VaultLi
 			return nil, err
 		}
 		links = append(links, VaultLink{
-			VaultNotePath:    path,
-			VaultNoteTitle:   title,
-			KisukeEntityType: "inferred",
-			KisukeEntityID:   "",
-			LinkType:         "inferred",
-			Confidence:       0.4,
-			CreatedAt:        "",
-			UpdatedAt:        "",
+			VaultNotePath: path,
+			VaultNoteTitle: title,
+			EntityType:    "inferred",
+			EntityID:      "",
+			LinkType:      "inferred",
+			Confidence:    0.4,
+			CreatedAt:     "",
+			UpdatedAt:     "",
 		})
 	}
 	return links, nil
@@ -392,9 +385,9 @@ func (s *sqliteStore) SyncCalendarEvents(events []CalendarEvent) error {
 
 func (s *sqliteStore) GetVaultLinksByEntity(entityType, entityID string) ([]VaultLink, error) {
 	rows, err := s.db.Query(`
-		SELECT id, vault_note_path, vault_note_title, kisuke_entity_type, kisuke_entity_id, link_type, confidence, created_at, updated_at
+		SELECT id, vault_note_path, vault_note_title, entity_type, entity_id, link_type, confidence, created_at, updated_at
 		FROM vault_links
-		WHERE kisuke_entity_type = ? AND kisuke_entity_id = ?
+		WHERE entity_type = ? AND entity_id = ?
 		ORDER BY confidence DESC
 	`, entityType, entityID)
 	if err != nil {
@@ -405,7 +398,7 @@ func (s *sqliteStore) GetVaultLinksByEntity(entityType, entityID string) ([]Vaul
 	var links []VaultLink
 	for rows.Next() {
 		var l VaultLink
-		if err := rows.Scan(&l.ID, &l.VaultNotePath, &l.VaultNoteTitle, &l.KisukeEntityType, &l.KisukeEntityID,
+		if err := rows.Scan(&l.ID, &l.VaultNotePath, &l.VaultNoteTitle, &l.EntityType, &l.EntityID,
 			&l.LinkType, &l.Confidence, &l.CreatedAt, &l.UpdatedAt); err != nil {
 			return nil, err
 		}
@@ -416,7 +409,7 @@ func (s *sqliteStore) GetVaultLinksByEntity(entityType, entityID string) ([]Vaul
 
 func (s *sqliteStore) GetVaultLinksByNote(notePath string) ([]VaultLink, error) {
 	rows, err := s.db.Query(`
-		SELECT id, vault_note_path, vault_note_title, kisuke_entity_type, kisuke_entity_id, link_type, confidence, created_at, updated_at
+		SELECT id, vault_note_path, vault_note_title, entity_type, entity_id, link_type, confidence, created_at, updated_at
 		FROM vault_links
 		WHERE vault_note_path = ?
 		ORDER BY confidence DESC
@@ -429,7 +422,7 @@ func (s *sqliteStore) GetVaultLinksByNote(notePath string) ([]VaultLink, error) 
 	var links []VaultLink
 	for rows.Next() {
 		var l VaultLink
-		if err := rows.Scan(&l.ID, &l.VaultNotePath, &l.VaultNoteTitle, &l.KisukeEntityType, &l.KisukeEntityID,
+		if err := rows.Scan(&l.ID, &l.VaultNotePath, &l.VaultNoteTitle, &l.EntityType, &l.EntityID,
 			&l.LinkType, &l.Confidence, &l.CreatedAt, &l.UpdatedAt); err != nil {
 			return nil, err
 		}
@@ -440,9 +433,9 @@ func (s *sqliteStore) GetVaultLinksByNote(notePath string) ([]VaultLink, error) 
 
 func (s *sqliteStore) CreateVaultLink(notePath, noteTitle, entityType, entityID, linkType string, confidence float64) error {
 	_, err := s.db.Exec(`
-		INSERT INTO vault_links (vault_note_path, vault_note_title, kisuke_entity_type, kisuke_entity_id, link_type, confidence)
+		INSERT INTO vault_links (vault_note_path, vault_note_title, entity_type, entity_id, link_type, confidence)
 		VALUES (?, ?, ?, ?, ?, ?)
-		ON CONFLICT(vault_note_path, kisuke_entity_type, kisuke_entity_id) DO UPDATE SET
+		ON CONFLICT(vault_note_path, entity_type, entity_id) DO UPDATE SET
 			confidence = excluded.confidence,
 			link_type = excluded.link_type,
 			updated_at = CURRENT_TIMESTAMP
@@ -453,7 +446,7 @@ func (s *sqliteStore) CreateVaultLink(notePath, noteTitle, entityType, entityID,
 func (s *sqliteStore) DeleteVaultLink(notePath, entityType, entityID string) error {
 	_, err := s.db.Exec(`
 		DELETE FROM vault_links
-		WHERE vault_note_path = ? AND kisuke_entity_type = ? AND kisuke_entity_id = ?
+		WHERE vault_note_path = ? AND entity_type = ? AND entity_id = ?
 	`, notePath, entityType, entityID)
 	return err
 }
@@ -674,7 +667,7 @@ func (s *sqliteStore) Vacuum() error {
 
 func (s *sqliteStore) GetAllVaultLinks() ([]VaultLink, error) {
 	rows, err := s.db.Query(`
-		SELECT id, vault_note_path, vault_note_title, kisuke_entity_type, kisuke_entity_id, link_type, confidence, created_at, updated_at
+		SELECT id, vault_note_path, vault_note_title, entity_type, entity_id, link_type, confidence, created_at, updated_at
 		FROM vault_links
 		ORDER BY confidence DESC, updated_at DESC
 	`)
@@ -686,7 +679,7 @@ func (s *sqliteStore) GetAllVaultLinks() ([]VaultLink, error) {
 	var links []VaultLink
 	for rows.Next() {
 		var l VaultLink
-		if err := rows.Scan(&l.ID, &l.VaultNotePath, &l.VaultNoteTitle, &l.KisukeEntityType, &l.KisukeEntityID, &l.LinkType, &l.Confidence, &l.CreatedAt, &l.UpdatedAt); err != nil {
+		if err := rows.Scan(&l.ID, &l.VaultNotePath, &l.VaultNoteTitle, &l.EntityType, &l.EntityID, &l.LinkType, &l.Confidence, &l.CreatedAt, &l.UpdatedAt); err != nil {
 			return nil, err
 		}
 		links = append(links, l)

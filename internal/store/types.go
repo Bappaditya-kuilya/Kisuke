@@ -52,15 +52,15 @@ type Store interface {
 }
 
 type VaultLink struct {
-	ID               int64
-	VaultNotePath    string
-	VaultNoteTitle   string
-	KisukeEntityType string
-	KisukeEntityID   string
-	LinkType         string
-	Confidence       float64
-	CreatedAt        string
-	UpdatedAt        string
+	ID            int64
+	VaultNotePath string
+	VaultNoteTitle string
+	EntityType    string
+	EntityID      string
+	LinkType      string
+	Confidence    float64
+	CreatedAt     string
+	UpdatedAt     string
 }
 
 type SkillProgress struct {
